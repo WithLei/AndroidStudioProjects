@@ -1,13 +1,18 @@
 package com.android.renly.phonecall;
 
+import android.Manifest;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.telephony.SmsManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.Manifest.permission;
+
+import java.security.Permission;
 
 import static android.view.View.*;
 
@@ -33,7 +38,13 @@ public class MainActivity extends AppCompatActivity {
 
             }
             else if(v==btn_main_send){//点击讯息
-                Toast.makeText(MainActivity.this, "点击讯息", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(MainActivity.this, "点击讯息", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(Intent.ACTION_SENDTO);
+                String num = et_main_number.getText().toString();
+                String sms = et_main_sns.getText().toString();
+                intent.setData(Uri.parse("smsto:"+num));
+                intent.putExtra("sms_body",sms);
+                startActivity(intent);
             }
         }
     };
@@ -41,10 +52,21 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public boolean onLongClick(View v) {
             if(v==btn_main_call){
-                Toast.makeText(MainActivity.this, "长按呼出", Toast.LENGTH_LONG).show();
+//                Toast.makeText(MainActivity.this, "长按呼出", Toast.LENGTH_LONG).show();
+                //创建一个隐式意图Itent
+                Intent intent = new Intent(Intent.ACTION_CALL);
+                //携带数据
+                String num = et_main_number.getText().toString();
+                intent.setData(Uri.parse("tel:"+num));
+                //startActivity(intent)
+                startActivity(intent);//6.0及以上系统需要做适配
             }
             else if(v==btn_main_send){
                 Toast.makeText(MainActivity.this,"长按讯息",Toast.LENGTH_LONG).show();
+                SmsManager smsManager = SmsManager.getDefault();
+                String num = et_main_number.getText().toString();
+                String sms = et_main_sns.getText().toString();
+                smsManager.sendTextMessage(num,null,sms,null,null);
             }
             return true;//表示此事件已被消费，不会再触发点击事件
         }
