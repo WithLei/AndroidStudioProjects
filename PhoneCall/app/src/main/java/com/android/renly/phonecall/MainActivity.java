@@ -85,6 +85,6 @@ public class MainActivity extends AppCompatActivity {
         btn_main_send.setOnClickListener(onClickListener);
         //给视图对象设置长按监听
         btn_main_call.setOnLongClickListener(onLongClickListener);
-        btn_main_send.setOnLongClickListener(onLongClickListener);=
+        btn_main_send.setOnLongClickListener(onLongClickListener);
     }
 }

@@ -21,6 +21,7 @@ public class MainActivity extends Activity implements OnClickListener {
 		setContentView(R.layout.activity_main);
 		
 		//初始化视图对象
+
 		et_main_message = (EditText) findViewById(R.id.et_main_message);
 		btn_main_start1 = (Button) findViewById(R.id.btn_main_start1);
 		btn_main_start2 = (Button) findViewById(R.id.btn_main_start2);
