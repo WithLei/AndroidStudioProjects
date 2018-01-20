@@ -13,16 +13,18 @@
         android:orientation="vertical">
 
         <EditText
-            android:id="@+id/et_sp_key"
+            android:id="@+id/et_of_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="存储的key"/>
+            android:inputType="text"
+            android:hint="文件名"/>
 
         <EditText
-            android:id="@+id/et_sp_value"
+            android:id="@+id/et_of_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="存储的value"/>
+            android:inputType="text"
+            android:hint="文件内容"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -34,16 +36,34 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="onClickSave"
-                android:inputType="text"
-                android:text="存储" />
+                android:text="存储1" />
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="onClickRead"
-                android:inputType="text"
-                android:text="查询" />
+                android:text="读取1" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="onClickSave2"
+                android:text="存储2" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="onClickRead2"
+                android:text="读取2" />
 
         </LinearLayout>
 

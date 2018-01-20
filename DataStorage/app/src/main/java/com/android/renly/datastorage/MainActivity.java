@@ -17,13 +17,13 @@ public class MainActivity extends AppCompatActivity {
     public void onClickSP(View v){
         startActivity(new Intent(this, SpActivity.class));
     }
-
+    //手机内部存储
     public void onClickIF(View v){
         startActivity(new Intent(this,IFActivity.class));
     }
-
+    //手机外部文件存储
     public void onClickOF(View v){
-
+        startActivity(new Intent(this,OFActivity.class));
     }
 
     public void onClickDB(View v){
