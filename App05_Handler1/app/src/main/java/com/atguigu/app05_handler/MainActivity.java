@@ -6,6 +6,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.List;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
@@ -29,6 +30,7 @@ public class MainActivity extends Activity {
 	private LinearLayout ll_main_loading;
 	private List<ShopInfo> data;
 	private ShopInfoAdapter adapter;
+	@SuppressLint("HandlerLeak")
 	private Handler handler = new Handler(){
 		public void handleMessage(android.os.Message msg) {
 			switch (msg.what) {
@@ -86,7 +88,7 @@ public class MainActivity extends Activity {
 	 */
 	private String requestJson() throws Exception {
 		String result = null;
-		String path = "http://192.168.10.165:8080/L05_Web/ShopInfoListServlet";
+		String path = "http://172.20.10.6:8080/L05_Web/ShopInfoListServlet";
 		//1. 得到连接对象
 		URL url = new URL(path);
 		HttpURLConnection connection = (HttpURLConnection) url.openConnection();
