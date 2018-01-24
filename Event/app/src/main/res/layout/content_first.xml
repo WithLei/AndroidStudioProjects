@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.android.renly.event.FirstActivity"
+    tools:showIn="@layout/activity_first">
+
+
+    <ImageView
+        android:id="@+id/iv_first_pic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:foregroundGravity="center_vertical"
+        android:src="@drawable/headphoto2"
+        android:onClick="onPicClick"/>
+</android.support.constraint.ConstraintLayout>
