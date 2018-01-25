@@ -6,25 +6,36 @@
     android:layout_height="match_parent"
     tools:context="com.android.renly.event.MainActivity">
 
+
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp">
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_main_click"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="点击测试" />
+
+            <Button
+                android:id="@+id/btn_main_longclick"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="长按测试" />
+        </LinearLayout>
 
         <Button
-            android:id="@+id/btn_main_click"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="点击测试" />
-
-        <Button
-            android:id="@+id/btn_main_longclick"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="长按测试" />
+            android:onClick="onExitClick"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:text="退出界面" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
