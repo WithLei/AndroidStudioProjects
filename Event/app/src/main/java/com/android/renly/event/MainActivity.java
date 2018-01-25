@@ -3,6 +3,7 @@ package com.android.renly.event;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -17,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, FirstActivity.class));
+                Log.e("Test","TouchActivity");
             }
         });
 
@@ -24,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onLongClick(View v) {
                 startActivity(new Intent(MainActivity.this,secondActivity.class));
+                Log.e("Test","TouchActivity");
                 return true;
             }
         });
