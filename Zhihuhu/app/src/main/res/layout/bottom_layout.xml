@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/bottom"
+    android:layout_width="fill_parent"
+    android:layout_height="50dp"
+    android:layout_alignParentBottom="true"
+    android:background="#FFFFFF"
+    android:orientation="horizontal">
+
+    <TextView
+        style="@style/BottomStyle"
+        android:id="@+id/tv_bottom_first"
+        android:drawableTop="@drawable/textblue"
+        android:text="首页" />
+
+    <TextView
+        style="@style/BottomStyle"
+        android:id="@+id/tv_bottom_second"
+        android:drawableTop="@drawable/lights"
+        android:text="想法" />
+
+    <TextView
+        style="@style/BottomStyle"
+        android:id="@+id/tv_bottom_third"
+        android:drawableTop="@drawable/store"
+        android:text="市场" />
+
+    <TextView
+        style="@style/BottomStyle"
+        android:id="@+id/tv_bottom_fourth"
+        android:drawableTop="@drawable/remind"
+        android:text="消息" />
+
+    <TextView
+        style="@style/BottomStyle"
+        android:id="@+id/tv_bottom_fifth"
+        android:drawableTop="@drawable/account"
+        android:text="我的" />
+</LinearLayout>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="80dp"
+    android:id="@+id/top"
+    android:background="#FFFFFF"
+    android:orientation="horizontal">
+
+    <SearchView
+        android:id="@+id/sv_top_search"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_toLeftOf="@id/tv_top_ask"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/searchview_line"
+        android:iconifiedByDefault="true"
+        android:queryHint="有修养的人如何表达愤怒" />
+
+    <TextView
+        android:drawableLeft="@drawable/edit"
+        android:id="@+id/tv_top_ask"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_margin="10dp"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:textSize="20sp"
+        android:onClick="onAsk"
+        android:text=" 提问"/>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/sv_top_search">
+
+        <TextView
+            style="@style/TopStyle"
+            android:id="@+id/tv_top_first"
+            android:textColor="#222222"
+            android:text="关注" />
+
+        <TextView
+            android:id="@+id/tv_top_second"
+            style="@style/TopStyle"
+            android:text="推荐" />
+
+        <TextView
+            android:id="@+id/tv_top_third"
+            style="@style/TopStyle"
+            android:text="热榜" />
+    </LinearLayout>
+</RelativeLayout>
