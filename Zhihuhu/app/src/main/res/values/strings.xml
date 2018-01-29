@@ -11,5 +11,9 @@
         This is an ad unit ID for an interstitial test ad. Replace with your own interstitial ad unit id.
         For more information, see https://support.google.com/admob/answer/3052638
     <!- -->
+    <string name="item_action_agreeAnswer">赞同了回答</string>
+    <string name="item_action_follow">关注了问题</string>
+    <string name="item_action_agreeIssue">赞了文章</string>
+    <string name="item_action_anwser">回答了回答</string>
     <string name="interstitial_ad_unit_id">ca-app-pub-3940256099942544/1033173712</string>
 </resources>

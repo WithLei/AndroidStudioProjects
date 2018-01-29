@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp">
+
+        <ImageView
+            android:id="@+id/iv_item_headphoto"
+            android:layout_alignParentLeft="true"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            app:srcCompat="@android:drawable/btn_star" />
+
+        <TextView
+            android:id="@+id/tv_item_name"
+            android:layout_marginLeft="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@id/iv_item_headphoto"
+            android:text="name" />
+
+        <TextView
+            android:id="@+id/tv_item_action"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/tv_item_name"
+            android:text="action"/>
+
+        <TextView
+            android:id="@+id/tv_item_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/tv_item_action"
+            android:text=" · "/>
+
+        <TextView
+            android:id="@+id/tv_item_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/tv_item_left"
+            android:text="time"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/tv_item_time"
+            android:text=" 分钟前"/>
+
+        <TextView
+            android:id="@+id/tv_item_title"
+            android:layout_marginTop="5dp"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv_item_headphoto"
+            android:text="title"/>
+
+        <TextView
+            android:id="@+id/tv_item_content"
+            android:layout_marginTop="5dp"
+            android:textColor="#222222"
+            android:textSize="15sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_item_title"
+            android:text="content"/>
+
+        <TextView
+            android:id="@+id/tv_item_agreeCount"
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_item_content"
+            android:text="agreeCount"/>
+
+        <TextView
+            android:id="@+id/tv_item_agree"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/tv_item_agreeCount"
+            android:layout_alignBaseline="@id/tv_item_agreeCount"
+            android:text=" 赞同 · " />
+
+        <TextView
+            android:id="@+id/tv_item_commentCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/tv_item_agree"
+            android:layout_alignBaseline="@id/tv_item_agree"
+            android:text="commentCount" />
+
+        <TextView
+            android:id="@+id/tv_item_comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/tv_item_commentCount"
+            android:layout_alignBaseline="@id/tv_item_commentCount"
+            android:text=" 评论" />
+
+        <Button
+            android:id="@+id/btn_item_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/tv_item_comment"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/code"
+            android:minHeight="0dp"
+            android:minWidth="0dp"/>
+
+
+    </RelativeLayout>
+
+</LinearLayout>
