@@ -1,53 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="10dp">
-
-    <TextView
-        android:id="@+id/tv_askpage_cancel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="15sp"
-        android:clickable="true"
-        android:textColor="@color/colorPrimary"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:text="取消" />
-    <TextView
-        android:id="@+id/tv_askpage_ask"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentTop="true"
-        android:textSize="20sp"
-        android:textColor="#000000"
-        android:text="提问" />
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="15sp"
-        android:textColor="@color/colorPrimary"
-        android:clickable="false"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:text="下一步" />
-    <view
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:layout_marginTop="10dp"
-        android:layout_below="@id/tv_askpage_ask"
-        android:id="@+id/view_askpage_underline" />
-
-    <EditText
-        android:id="@+id/et_askpage_askContent"
+    android:layout_height="match_parent">
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/view_askpage_underline"
-        android:inputType="textPersonName"
-        android:hint="输入问题并以问号结尾"
-        android:gravity="start"
-        />
-</RelativeLayout>
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/tv_askpage_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:clickable="true"
+            android:textColor="@color/colorPrimary"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:text="取消" />
+        <TextView
+            android:id="@+id/tv_askpage_ask"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentTop="true"
+            android:textSize="20sp"
+            android:textColor="#000000"
+            android:text="提问" />
+        <TextView
+            android:id="@+id/tv_askpage_next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="#CCCCCC"
+            android:longClickable="false"
+            android:clickable="false"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:text="下一步" />
+        <View
+            android:id="@+id/view_askpage_underline"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="#000000"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/tv_askpage_ask"/>
+        <EditText
+            android:id="@+id/et_askpage_askContent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/view_askpage_underline"
+            android:inputType="textPersonName"
+            android:hint="输入问题并以问号结尾"
+            android:gravity="start"/>
+
+    </RelativeLayout>
+</android.support.constraint.ConstraintLayout>

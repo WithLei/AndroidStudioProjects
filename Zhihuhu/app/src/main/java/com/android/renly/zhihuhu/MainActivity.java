@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,7 +16,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onAsk(View v){
-        Intent intent = new Intent(this,AskPage.class);
+        Intent intent = new Intent(MainActivity.this,askPage.class);
+//        Toast.makeText(this,"test", Toast.LENGTH_SHORT).show();
         startActivity(intent);
     }
 }
