@@ -3,6 +3,7 @@
     android:id="@+id/bottom"
     android:layout_width="fill_parent"
     android:layout_height="50dp"
+    android:padding="5dp"
     android:layout_alignParentBottom="true"
     android:background="#FFFFFF"
     android:orientation="horizontal">
@@ -10,7 +11,7 @@
     <TextView
         style="@style/BottomStyle"
         android:id="@+id/tv_bottom_first"
-        android:drawableTop="@drawable/textblue"
+        android:drawableTop="@drawable/text"
         android:text="首页" />
 
     <TextView

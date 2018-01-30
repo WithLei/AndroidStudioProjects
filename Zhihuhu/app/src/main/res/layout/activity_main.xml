@@ -7,16 +7,14 @@
     android:background="#CCCCCC"
     android:orientation="vertical">
 
-    <include layout="@layout/top_layout"/>
+    <include layout="@layout/top_layout" />
 
-
-    <ListView
-        android:id="@+id/lv"
+    <android.support.v4.view.ViewPager
+        android:id="@+id/id_viewpage"
+        android:layout_width="match_parent"
         android:layout_below="@id/top"
         android:layout_above="@id/bottom"
-        style="@style/NewsListStyle"
-        android:layout_width="fill_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"></android.support.v4.view.ViewPager>
 
     <include layout="@layout/bottom_layout" />
 </RelativeLayout>

@@ -38,17 +38,17 @@
 
         <TextView
             style="@style/TopStyle"
-            android:id="@+id/tv_top_first"
+            android:id="@+id/tv_top_follow"
             android:textColor="#222222"
             android:text="关注" />
 
         <TextView
-            android:id="@+id/tv_top_second"
+            android:id="@+id/tv_top_commond"
             style="@style/TopStyle"
             android:text="推荐" />
 
         <TextView
-            android:id="@+id/tv_top_third"
+            android:id="@+id/tv_top_trending"
             style="@style/TopStyle"
             android:text="热榜" />
     </LinearLayout>

@@ -7,6 +7,7 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
@@ -105,6 +106,7 @@ public class ImageLoader {
 	 * loadBitmapFromThirdCache("../b.jpg", imageView)
 	 * loadBitmapFromThirdCache("../f.jpg", imageView)--->imageView.setTag("../f.jpg")
 	 */
+	@SuppressLint("StaticFieldLeak")
 	private void loadBitmapFromThirdCache(final String imagePath, final ImageView imageView) {
 		new AsyncTask<Void, Void, Bitmap>() {
 			protected void onPreExecute() {
