@@ -8,7 +8,7 @@ android {
     defaultConfig {
         applicationId "com.example.shoppingcart"
         minSdkVersion 14
-        targetSdkVersion 16
+        targetSdkVersion 26
     }
 
     buildTypes {
@@ -22,4 +22,13 @@ android {
 dependencies {
     compile files('libs/alipaySdk-20160223.jar')
     compile files('libs/android-support-v13.jar')
+}
+
+repositories {
+    google()
+}
+buildscript {
+    repositories {
+        google()
+    }
 }
