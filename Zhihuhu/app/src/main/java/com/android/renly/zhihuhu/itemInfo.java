@@ -7,16 +7,16 @@ import android.graphics.drawable.Drawable;
  */
 
 public class itemInfo {
-    private Drawable headphoto;//头像
+    private String headphoto;//头像
     private String username;//用户名
     private String action;//用户行为
-    private long time;//经过时间
+    private int time;//经过时间
     private String title;//标题
     private String content;//内容梗概
     private int agreeCount;//赞同数
     private int commentCount;//评论数
 
-    public itemInfo(Drawable headphoto, String username, String action, long time, String title, String content, int agreeCount, int commentCount) {
+    public itemInfo(String headphoto, String username, String action, int time, String title, String content, int agreeCount, int commentCount) {
         this.headphoto = headphoto;
         this.username = username;
         this.action = action;
@@ -30,7 +30,7 @@ public class itemInfo {
     public itemInfo() {
     }
 
-    public Drawable getHeadphoto() {
+    public String getHeadphoto() {
         return headphoto;
     }
 
@@ -42,7 +42,7 @@ public class itemInfo {
         return action;
     }
 
-    public long getTime() {
+    public int getTime() {
         return time;
     }
 
@@ -62,7 +62,7 @@ public class itemInfo {
         return commentCount;
     }
 
-    public void setHeadphoto(Drawable headphoto) {
+    public void setHeadphoto(String headphoto) {
         this.headphoto = headphoto;
     }
 
@@ -74,7 +74,7 @@ public class itemInfo {
         this.action = action;
     }
 
-    public void setTime(long time) {
+    public void setTime(int time) {
         this.time = time;
     }
 

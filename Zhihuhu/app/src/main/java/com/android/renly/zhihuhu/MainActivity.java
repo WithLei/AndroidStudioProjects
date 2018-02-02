@@ -15,11 +15,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,6 +46,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView tv_bottom_fifth;
     private Drawable top_img;//用于动态替换的图片
 
+    protected static final int WHAT_REQUEST_SUCCESS = 1;
+    protected static final int WHAT_REQUEST_ERROR = 2;
+    private ListView lv_main_item;
+    private LinearLayout ll_main_loading;
+    private List<itemInfo> data;
+    private itemInfoAdapter adapter;
+    @SuppressLint("HandlerLeak")
+    private Handler handler = new Handler() {
+        public void handleMessage(android.os.Message msg) {
+            switch (msg.what) {
+                case WHAT_REQUEST_SUCCESS:
+                    ll_main_loading.setVisibility(View.GONE);
+                    //显示列表
+                    lv_main_item.setAdapter(adapter);
+                    break;
+                case WHAT_REQUEST_ERROR:
+                    ll_main_loading.setVisibility(View.GONE);
+                    Toast.makeText(MainActivity.this, "加载数据失败", Toast.LENGTH_LONG).show();
+                    break;
+
+                default:
+                    break;
+            }
+        }
+    };
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,9 +80,124 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         initTopView();
         initBottomView();
+        initItemView();
         initViewPage();
         initTopEvent();
         initBottomEvent();
+    }
+
+    private void initItemView() {
+        lv_main_item = findViewById(R.id.lv_main_item);
+        ll_main_loading = findViewById(R.id.ll_main_loading);
+        itemInfoAdapter adapter = new itemInfoAdapter();
+
+        //1. 主线程, 显示提示视图
+        ll_main_loading.setVisibility(View.VISIBLE);
+        //2. 分线程, 联网请求
+        //启动分线程请求服务器动态加载数据并显示
+        new Thread() {
+            public void run() {
+                //联网请求得到jsonString
+                try {
+                    String jsonString = requestJson();
+                    //解析成List<ShopInfo>
+                    data = new Gson().fromJson(jsonString, new TypeToken<List<itemInfo>>() {
+                    }.getType());
+                    //3. 主线程, 更新界面
+                    handler.sendEmptyMessage(WHAT_REQUEST_SUCCESS);//发请求成功的消息
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    handler.sendEmptyMessage(WHAT_REQUEST_ERROR);//发送请求失败的消息
+                }
+            }
+        }.start();
+    }
+
+    private String requestJson() throws Exception {
+        String result = null;
+        String path = "http://172.20.10.6:8080/L05_Web/ShopInfoListServlet";
+        //1. 得到连接对象
+        URL url = new URL(path);
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        //2. 设置
+        connection.setConnectTimeout(5000);
+        connection.setReadTimeout(5000);
+        //连接
+        connection.connect();
+        //发请求并读取服务器返回的数据
+        int responseCode = connection.getResponseCode();
+        if(responseCode==200) {
+            InputStream is = connection.getInputStream();
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            byte[] buffer = new byte[1024];
+            int len = -1;
+            while ((len = is.read(buffer)) != -1) {
+                baos.write(buffer, 0, len);
+            }
+            baos.close();
+            is.close();
+            connection.disconnect();
+
+            result = baos.toString();
+        } else {
+            //也可以抛出运行时异常
+        }
+        return result;
+    }
+
+    class itemInfoAdapter extends BaseAdapter{
+
+        private ImageLoader imageLoader;
+
+        public itemInfoAdapter() {
+            imageLoader = new ImageLoader(MainActivity.this,R.drawable.loading,R.drawable.error);
+        }
+
+        @Override
+        public int getCount() {
+            return data.size();
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return data.get(position);
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return 0;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            if(convertView==null) {
+                convertView = View.inflate(MainActivity.this, R.layout.item_main, null);
+            }
+            //得到当前行的数据对象
+            itemInfo itemInfo = data.get(position);
+            //得到当前的子view
+            ImageView iv_item_headphoto = convertView.findViewById(R.id.iv_item_headphoto);
+            TextView tv_item_name = convertView.findViewById(R.id.tv_item_name);
+            TextView tv_item_action = convertView.findViewById(R.id.tv_item_action);
+            TextView tv_item_time = convertView.findViewById(R.id.tv_item_time);
+            TextView tv_item_title = convertView.findViewById(R.id.tv_item_title);
+            TextView tv_item_content = convertView.findViewById(R.id.tv_item_content);
+            TextView tv_item_agreeCount = convertView.findViewById(R.id.tv_item_agreeCount);
+            TextView tv_item_commentCount = convertView.findViewById(R.id.tv_item_commentCount);
+            //设置数据
+            tv_item_name.setText(itemInfo.getUsername());
+            tv_item_action.setText(itemInfo.getAction());
+            tv_item_time.setText(itemInfo.getTime());
+            tv_item_title.setText(itemInfo.getTitle());
+            tv_item_content.setText(itemInfo.getContent());
+            tv_item_agreeCount.setText(itemInfo.getAgreeCount());
+            tv_item_commentCount.setText(itemInfo.getCommentCount());
+            String imagePath = itemInfo.getHeadphoto();
+            //根据图片路径启动分线程动态请求服务加载图片并显示
+            imageLoader.loadImage(imagePath,iv_item_headphoto);
+
+            return convertView;
+        }
     }
 
     private void initBottomEvent() {
