@@ -10,6 +10,7 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,11 +20,14 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -49,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected static final int WHAT_REQUEST_SUCCESS = 1;
     protected static final int WHAT_REQUEST_ERROR = 2;
     private ListView lv_main_item;
-    private LinearLayout ll_main_loading;
+//    private LinearLayout ll_main_loading;
     private List<itemInfo> data;
     private itemInfoAdapter adapter;
     @SuppressLint("HandlerLeak")
@@ -57,12 +61,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         public void handleMessage(android.os.Message msg) {
             switch (msg.what) {
                 case WHAT_REQUEST_SUCCESS:
-                    ll_main_loading.setVisibility(View.GONE);
+//                    ll_main_loading.setVisibility(View.GONE);
                     //显示列表
+                    Log.e("TAG","Success--01handleMessage!!!!");
                     lv_main_item.setAdapter(adapter);
+                    Log.e("TAG","Success--02handleMessage!!!!");
                     break;
                 case WHAT_REQUEST_ERROR:
-                    ll_main_loading.setVisibility(View.GONE);
+//                    ll_main_loading.setVisibility(View.GONE);
                     Toast.makeText(MainActivity.this, "加载数据失败", Toast.LENGTH_LONG).show();
                     break;
 
@@ -88,11 +94,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void initItemView() {
         lv_main_item = findViewById(R.id.lv_main_item);
-        ll_main_loading = findViewById(R.id.ll_main_loading);
-        itemInfoAdapter adapter = new itemInfoAdapter();
+        adapter = new itemInfoAdapter();
+//        ll_main_loading = findViewById(R.id.ll_main_loading);
 
         //1. 主线程, 显示提示视图
-        ll_main_loading.setVisibility(View.VISIBLE);
+//        ll_main_loading.setVisibility(View.VISIBLE);
         //2. 分线程, 联网请求
         //启动分线程请求服务器动态加载数据并显示
         new Thread() {
@@ -105,7 +111,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     }.getType());
                     //3. 主线程, 更新界面
                     handler.sendEmptyMessage(WHAT_REQUEST_SUCCESS);//发请求成功的消息
+//                    Log.e("TAG","Success!!!!");
                 } catch (Exception e) {
+//                    Log.e("TAG","Fail!!!!");
                     e.printStackTrace();
                     handler.sendEmptyMessage(WHAT_REQUEST_ERROR);//发送请求失败的消息
                 }
@@ -115,7 +123,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private String requestJson() throws Exception {
         String result = null;
-        String path = "http://172.20.10.6:8080/L05_Web/ShopInfoListServlet";
+        String path = "http://172.20.10.6:8080/Zhihuhu_web/ContentInfoListServlet";
         //1. 得到连接对象
         URL url = new URL(path);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -140,8 +148,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             result = baos.toString();
         } else {
+            Log.e("TAG","Fail!!!!");
             //也可以抛出运行时异常
         }
+        Log.e("TAG","Success--requestJson()!!!!");
         return result;
     }
 
@@ -170,6 +180,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
+            Log.e("TAG","Success--startFinishConvert!!!!");
             if(convertView==null) {
                 convertView = View.inflate(MainActivity.this, R.layout.item_main, null);
             }
@@ -195,7 +206,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             String imagePath = itemInfo.getHeadphoto();
             //根据图片路径启动分线程动态请求服务加载图片并显示
             imageLoader.loadImage(imagePath,iv_item_headphoto);
-
+            Log.e("TAG","Success--finishConvert!!!!");
             return convertView;
         }
     }
@@ -246,11 +257,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tv_bottom_first.setCompoundDrawables(null,top_img,null,null);
     }
 
+
     private void initTopEvent() {
         tv_top_follow.setOnClickListener(this);
         tv_top_commond.setOnClickListener(this);
         tv_top_trending.setOnClickListener(this);
-        mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             /*
             ViewPage左右滑动时
              */
@@ -286,9 +298,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void initViewPage() {
-        // 初妈化三个布局
+        // 初始化三个布局
         LayoutInflater mLayoutInflater = LayoutInflater.from(this);
-        View activity_followpage = mLayoutInflater.inflate(R.layout.activity_followpage, null);
+        View activity_followpage = mLayoutInflater.inflate(R.layout.activity_itempage, null);
         View activity_commondpage = mLayoutInflater.inflate(R.layout.activity_commondpage, null);
         View activity_trending = mLayoutInflater.inflate(R.layout.activity_trending, null);
 
@@ -330,7 +342,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void initTopView() {
         mViewPager = findViewById(R.id.id_viewpage);
-        // 初始化四个按钮
+        // 初始化三个按钮
         tv_top_follow = findViewById(R.id.tv_top_follow);
         tv_top_commond = findViewById(R.id.tv_top_commond);
         tv_top_trending = findViewById(R.id.tv_top_trending);
@@ -350,19 +362,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         switch (arg0.getId()) {
             case R.id.tv_top_follow:
+                Toast.makeText(this,"test1",Toast.LENGTH_LONG).show();
                 mViewPager.setCurrentItem(0);
                 resetImg();
-                tv_top_follow.setTextColor(Color.BLUE);
+                tv_top_follow.setTextColor(Color.BLACK);
                 break;
             case R.id.tv_top_commond:
+                Toast.makeText(this,"test2",Toast.LENGTH_LONG).show();
                 mViewPager.setCurrentItem(1);
                 resetImg();
-                tv_top_commond.setTextColor(Color.BLUE);
+                tv_top_commond.setTextColor(Color.BLACK);
                 break;
             case R.id.tv_top_trending:
+                Toast.makeText(this,"test3",Toast.LENGTH_LONG).show();
                 mViewPager.setCurrentItem(2);
                 resetImg();
-                tv_top_trending.setTextColor(Color.BLUE);
+                tv_top_trending.setTextColor(Color.BLACK);
                 break;
             default:
                 break;
@@ -383,7 +398,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      */
     private boolean flag = false;
     @SuppressLint("HandlerLeak")
-    private Handler handler = new Handler(){
+    private Handler handler2 = new Handler(){
         @Override
         public void handleMessage(Message msg) {
             if(msg.what==1){
@@ -401,7 +416,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
             Toast.makeText(MainActivity.this,"再按一次退出", Toast.LENGTH_SHORT).show();
             flag = true;
-            handler.sendEmptyMessageDelayed(1,2000);
+            handler2.sendEmptyMessageDelayed(1,2000);
             return true;
         }
         return super.onKeyUp(keyCode, event);
