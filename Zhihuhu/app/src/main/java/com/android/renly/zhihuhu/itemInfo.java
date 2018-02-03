@@ -42,9 +42,7 @@ public class itemInfo {
         return action;
     }
 
-    public int getTime() {
-        return time;
-    }
+    public int getTime() {return time;}
 
     public String getTitle() {
         return title;

@@ -13,10 +13,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -34,10 +36,16 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     private ViewPager mViewPager;// 用来放置界面切换
     private PagerAdapter mPagerAdapter;// 初始化View适配器
     private List<View> mViews = new ArrayList<View>();// 用来存放Tab01-04
+    //ListView
+    LayoutInflater mLayoutInflater = null;
+    private View activity_followpage;
+    //ask button
+    private Button btn_top_ask;
     // Top三个按钮
     private TextView tv_top_follow;
     private TextView tv_top_commond;
@@ -48,12 +56,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView tv_bottom_third;
     private TextView tv_bottom_fourth;
     private TextView tv_bottom_fifth;
-    private Drawable top_img;//用于动态替换的图片
 
     protected static final int WHAT_REQUEST_SUCCESS = 1;
     protected static final int WHAT_REQUEST_ERROR = 2;
     private ListView lv_main_item;
-//    private LinearLayout ll_main_loading;
+    private LinearLayout ll_main_loading;
     private List<itemInfo> data;
     private itemInfoAdapter adapter;
     @SuppressLint("HandlerLeak")
@@ -61,14 +68,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         public void handleMessage(android.os.Message msg) {
             switch (msg.what) {
                 case WHAT_REQUEST_SUCCESS:
-//                    ll_main_loading.setVisibility(View.GONE);
+                    ll_main_loading.setVisibility(View.GONE);
                     //显示列表
                     Log.e("TAG","Success--01handleMessage!!!!");
                     lv_main_item.setAdapter(adapter);
                     Log.e("TAG","Success--02handleMessage!!!!");
                     break;
                 case WHAT_REQUEST_ERROR:
-//                    ll_main_loading.setVisibility(View.GONE);
+                    ll_main_loading.setVisibility(View.GONE);
                     Toast.makeText(MainActivity.this, "加载数据失败", Toast.LENGTH_LONG).show();
                     break;
 
@@ -93,12 +100,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void initItemView() {
-        lv_main_item = findViewById(R.id.lv_main_item);
+        mLayoutInflater = LayoutInflater.from(this);
+        activity_followpage = mLayoutInflater.inflate(R.layout.activity_itempage, null);
+        lv_main_item = activity_followpage.findViewById(R.id.lv_main_item);
         adapter = new itemInfoAdapter();
-//        ll_main_loading = findViewById(R.id.ll_main_loading);
+        ll_main_loading = activity_followpage.findViewById(R.id.ll_main_loading);
 
         //1. 主线程, 显示提示视图
-//        ll_main_loading.setVisibility(View.VISIBLE);
+        ll_main_loading.setVisibility(View.VISIBLE);
         //2. 分线程, 联网请求
         //启动分线程请求服务器动态加载数据并显示
         new Thread() {
@@ -111,9 +120,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     }.getType());
                     //3. 主线程, 更新界面
                     handler.sendEmptyMessage(WHAT_REQUEST_SUCCESS);//发请求成功的消息
-//                    Log.e("TAG","Success!!!!");
                 } catch (Exception e) {
-//                    Log.e("TAG","Fail!!!!");
                     e.printStackTrace();
                     handler.sendEmptyMessage(WHAT_REQUEST_ERROR);//发送请求失败的消息
                 }
@@ -180,12 +187,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            Log.e("TAG","Success--startFinishConvert!!!!");
+            Log.e("TAG","Success--startConvert!!!!");
             if(convertView==null) {
                 convertView = View.inflate(MainActivity.this, R.layout.item_main, null);
             }
             //得到当前行的数据对象
             itemInfo itemInfo = data.get(position);
+            Log.e("TAG","Success--ConvertTest001  !!!!");
             //得到当前的子view
             ImageView iv_item_headphoto = convertView.findViewById(R.id.iv_item_headphoto);
             TextView tv_item_name = convertView.findViewById(R.id.tv_item_name);
@@ -195,14 +203,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             TextView tv_item_content = convertView.findViewById(R.id.tv_item_content);
             TextView tv_item_agreeCount = convertView.findViewById(R.id.tv_item_agreeCount);
             TextView tv_item_commentCount = convertView.findViewById(R.id.tv_item_commentCount);
+            Log.e("TAG","Success--ConvertTest002  !!!!");
+//            convertView.findViewById(R.id.iv_item_headphoto).setBackground(MainActivity.this.getResources().getDrawable(R.drawable.headphoto));
             //设置数据
             tv_item_name.setText(itemInfo.getUsername());
-            tv_item_action.setText(itemInfo.getAction());
-            tv_item_time.setText(itemInfo.getTime());
-            tv_item_title.setText(itemInfo.getTitle());
             tv_item_content.setText(itemInfo.getContent());
-            tv_item_agreeCount.setText(itemInfo.getAgreeCount());
-            tv_item_commentCount.setText(itemInfo.getCommentCount());
+            tv_item_time.setText(itemInfo.getTime()+"");
+            tv_item_title.setText(itemInfo.getTitle());
+            switch (itemInfo.getAction()){
+                case "0":tv_item_action.setText(R.string.item_action_agreeIssue);break;
+                case "1":tv_item_action.setText(R.string.item_action_agreeAnswer);break;
+                case "2":tv_item_action.setText(R.string.item_action_anwser);break;
+                case "3":tv_item_action.setText(R.string.item_action_follow);break;
+            }
+            tv_item_agreeCount.setText(itemInfo.getAgreeCount()+"");
+            tv_item_commentCount.setText(itemInfo.getCommentCount()+"");
             String imagePath = itemInfo.getHeadphoto();
             //根据图片路径启动分线程动态请求服务加载图片并显示
             imageLoader.loadImage(imagePath,iv_item_headphoto);
@@ -252,13 +267,39 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tv_bottom_fifth = findViewById(R.id.tv_bottom_fifth);
 
         tv_bottom_first.setTextColor(Color.parseColor("#3186CF"));
-        top_img = getResources().getDrawable(R.drawable.textblue);
-        top_img.setBounds(0,0,top_img.getMinimumWidth(),top_img.getMinimumHeight());
-        tv_bottom_first.setCompoundDrawables(null,top_img,null,null);
+        Drawable top_img = getResources().getDrawable(R.drawable.textblue);
+        top_img.setBounds(0,0, top_img.getMinimumWidth(), top_img.getMinimumHeight());
+        tv_bottom_first.setCompoundDrawables(null, top_img,null,null);
     }
 
 
+    @SuppressLint("ClickableViewAccessibility")
     private void initTopEvent() {
+        btn_top_ask.setOnClickListener(this);
+        btn_top_ask.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                Drawable top_img;
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_UP://松开事件
+                        //恢复颜色
+                        btn_top_ask.setTextColor(Color.parseColor("#289DDC"));
+                        top_img = getResources().getDrawable(R.drawable.edit);
+                        top_img.setBounds(0,0, top_img.getMinimumWidth(), top_img.getMinimumHeight());
+                        btn_top_ask.setCompoundDrawables(top_img, null,null,null);
+                        break;
+                    case MotionEvent.ACTION_DOWN:
+                        //改颜色
+                        btn_top_ask.setTextColor(Color.GRAY);
+                        top_img = getResources().getDrawable(R.drawable.editgray);
+                        top_img.setBounds(0,0, top_img.getMinimumWidth(), top_img.getMinimumHeight());
+                        btn_top_ask.setCompoundDrawables(top_img, null,null,null);
+                        break;
+                    default:break;
+                }
+                return false;
+            }
+        });
         tv_top_follow.setOnClickListener(this);
         tv_top_commond.setOnClickListener(this);
         tv_top_trending.setOnClickListener(this);
@@ -299,8 +340,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void initViewPage() {
         // 初始化三个布局
-        LayoutInflater mLayoutInflater = LayoutInflater.from(this);
-        View activity_followpage = mLayoutInflater.inflate(R.layout.activity_itempage, null);
         View activity_commondpage = mLayoutInflater.inflate(R.layout.activity_commondpage, null);
         View activity_trending = mLayoutInflater.inflate(R.layout.activity_trending, null);
 
@@ -342,16 +381,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void initTopView() {
         mViewPager = findViewById(R.id.id_viewpage);
+        //初始化ask button
+        btn_top_ask = findViewById(R.id.btn_top_ask);
         // 初始化三个按钮
         tv_top_follow = findViewById(R.id.tv_top_follow);
         tv_top_commond = findViewById(R.id.tv_top_commond);
         tv_top_trending = findViewById(R.id.tv_top_trending);
-    }
-    //提问按钮监听
-    public void onAsk(View v){
-        Intent intent = new Intent(MainActivity.this,askPage.class);
-//        Toast.makeText(this,"test", Toast.LENGTH_SHORT).show();
-        startActivity(intent);
     }
 
     /**
@@ -378,6 +413,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 mViewPager.setCurrentItem(2);
                 resetImg();
                 tv_top_trending.setTextColor(Color.BLACK);
+                break;
+            case R.id.btn_top_ask:
+                //打开askpage
+                Intent intent = new Intent(MainActivity.this,askPage.class);
+                startActivity(intent);
                 break;
             default:
                 break;

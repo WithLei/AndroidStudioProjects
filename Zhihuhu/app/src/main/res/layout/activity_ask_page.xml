@@ -11,9 +11,9 @@
             android:id="@+id/tv_askpage_cancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
+            android:textSize="15sp"
             android:clickable="true"
-            android:textColor="@color/colorPrimary"
+            android:textColor="#289DDC"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:text="取消" />
@@ -23,14 +23,14 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_alignParentTop="true"
-            android:textSize="20sp"
+            android:textSize="15sp"
             android:textColor="#000000"
             android:text="提问" />
         <TextView
             android:id="@+id/tv_askpage_next"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
+            android:textSize="15sp"
             android:textColor="#CCCCCC"
             android:longClickable="false"
             android:clickable="false"
@@ -51,6 +51,7 @@
             android:layout_alignParentStart="true"
             android:layout_below="@+id/view_askpage_underline"
             android:inputType="textPersonName"
+            android:textSize="15sp"
             android:hint="输入问题并以问号结尾"
             android:gravity="start"/>
 

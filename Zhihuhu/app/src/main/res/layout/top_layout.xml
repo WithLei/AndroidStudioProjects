@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="80dp"
+    android:layout_height="65dp"
     android:id="@+id/top"
     android:background="#FFFFFF"
     android:orientation="horizontal">
@@ -9,8 +9,8 @@
     <SearchView
         android:id="@+id/sv_top_search"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_toLeftOf="@id/tv_top_ask"
+        android:layout_height="30dp"
+        android:layout_toLeftOf="@id/btn_top_ask"
         android:layout_marginBottom="5dp"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="5dp"
@@ -18,18 +18,19 @@
         android:iconifiedByDefault="true"
         android:queryHint="有修养的人如何表达愤怒" />
 
-    <TextView
-        android:drawableLeft="@drawable/edit"
-        android:id="@+id/tv_top_ask"
+    <Button
+        android:id="@+id/btn_top_ask"
+        android:drawableStart="@drawable/edit"
+        android:background="#FFFFFF"
         android:layout_width="wrap_content"
-        android:layout_height="30dp"
+        android:layout_height="25dp"
         android:layout_alignParentRight="true"
         android:layout_margin="10dp"
         android:paddingRight="10dp"
         android:paddingLeft="10dp"
-        android:textSize="20sp"
-        android:onClick="onAsk"
-        android:text=" 提问"/>
+        android:textSize="15sp"
+        android:textColor="#289DDC"
+        android:text=" 提问" />
 
     <LinearLayout
         android:layout_width="fill_parent"

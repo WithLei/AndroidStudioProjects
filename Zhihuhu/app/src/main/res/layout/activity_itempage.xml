@@ -3,18 +3,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal">
-    <ListView
-        android:id="@+id/lv_main_item"
-        android:layout_above="@id/bottom"
-        android:layout_below="@id/top"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
     <LinearLayout
         android:id="@+id/ll_main_loading"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/bottom"
-        android:layout_below="@id/top"
+
         android:gravity="center"
         android:orientation="vertical"
         android:visibility="gone">
@@ -30,4 +23,9 @@
             android:text="正在加载中..." />
 
     </LinearLayout>
+    <ListView
+        android:id="@+id/lv_main_item"
+        style="@style/NewsListStyle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </LinearLayout>

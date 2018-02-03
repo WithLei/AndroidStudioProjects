@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.EditText;
@@ -50,8 +51,23 @@ public class askPage extends AppCompatActivity {
         tv_askpage_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                tv_askpage_cancel.setTextColor(Color.GRAY);
                 finish();
+            }
+        });
+        //按钮起按监听
+        tv_askpage_cancel.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_UP:
+                        tv_askpage_cancel.setTextColor(Color.parseColor("#289DDC"));
+                        break;
+                    case MotionEvent.ACTION_DOWN:
+                        tv_askpage_cancel.setTextColor(Color.GRAY);
+                        break;
+                    default:break;
+                }
+                return false;
             }
         });
         //下一步按钮监听
@@ -62,10 +78,24 @@ public class askPage extends AppCompatActivity {
                     //提交数据
 
                     //完成提交
-                    tv_askpage_cancel.setTextColor(Color.GRAY);
                     finish();
                     Toast.makeText(askPage.this,"已提交数据",Toast.LENGTH_LONG).show();
                 }
+            }
+        });
+        tv_askpage_next.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_UP:
+                        tv_askpage_next.setTextColor(Color.parseColor("#289DDC"));
+                        break;
+                    case MotionEvent.ACTION_DOWN:
+                        tv_askpage_next.setTextColor(Color.GRAY);
+                        break;
+                    default:break;
+                }
+                return false;
             }
         });
         tv_askpage_next.setClickable(false);

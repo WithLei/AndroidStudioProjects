@@ -27,7 +27,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".askPage" />
-        <activity android:name=".test" />
         <activity
             android:name=".activity_Login"
             android:label="@string/title_activity__login"></activity>
