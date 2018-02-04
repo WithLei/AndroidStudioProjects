@@ -16,7 +16,8 @@
         android:layout_marginTop="5dp"
         android:background="@drawable/searchview_line"
         android:iconifiedByDefault="true"
-        android:queryHint="有修养的人如何表达愤怒" />
+        android:queryHint="有修养的人如何表达愤怒"
+        />
 
     <Button
         android:id="@+id/btn_top_ask"

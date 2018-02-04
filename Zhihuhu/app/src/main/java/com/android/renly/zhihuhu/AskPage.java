@@ -115,7 +115,7 @@ public class askPage extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
                 if(temp.length()>0){
                     tv_askpage_next.setClickable(true);
-                    tv_askpage_next.setTextColor(Color.BLUE);
+                    tv_askpage_next.setTextColor(Color.parseColor("#289DDC"));
                 }
                 if(temp.length()==0){
                     tv_askpage_next.setClickable(false);

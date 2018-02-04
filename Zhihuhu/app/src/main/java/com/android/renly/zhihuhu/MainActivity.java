@@ -231,6 +231,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tv_bottom_second.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //打开second展示页
+                Intent intent1 = new Intent(MainActivity.this,secondBottom.class);
+                startActivity(intent1);
                 Toast.makeText(MainActivity.this,"想法按钮", Toast.LENGTH_SHORT).show();
             }
         });
