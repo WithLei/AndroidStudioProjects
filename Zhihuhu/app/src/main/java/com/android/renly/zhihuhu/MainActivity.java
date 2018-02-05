@@ -232,6 +232,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onClick(View v) {
                 Toast.makeText(MainActivity.this,"想法按钮", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this,bottom_second.class);
+                startActivity(intent);
             }
         });
 
