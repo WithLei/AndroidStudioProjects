@@ -38,9 +38,6 @@
         <activity
             android:name=".activity_Login"
             android:label="@string/title_activity__login" />
-        <activity
-            android:name=".secondBottom"
-            android:label="@string/title_activity_second_bottom" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -53,6 +50,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
+        <activity android:name=".bottom_second"></activity>
     </application>
 
 </manifest>
