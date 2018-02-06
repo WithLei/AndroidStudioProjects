@@ -231,23 +231,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tv_bottom_second.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this,"想法按钮", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(MainActivity.this,"想法按钮", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(MainActivity.this,bottom_second.class);
                 startActivity(intent);
+                finish();
             }
         });
 
         tv_bottom_third.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this,"市场按钮", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(MainActivity.this,"市场按钮", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this,bottom_third.class);
+                startActivity(intent);
+                finish();
             }
         });
 
         tv_bottom_fourth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this,"消息按钮", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(MainActivity.this,"消息按钮", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this,bottom_fourth.class);
+                startActivity(intent);
+                finish();
             }
         });
 

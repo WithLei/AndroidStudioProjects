@@ -171,16 +171,22 @@ public class bottom_second extends AppCompatActivity implements View.OnClickList
                 startActivity(intent);
                 break;
             case R.id.tv_bottom_third:
-                Toast.makeText(this,"市场按钮", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(this,"市场按钮", Toast.LENGTH_SHORT).show();
+                intent = new Intent(this,bottom_third.class);
+                startActivity(intent);
                 break;
             case R.id.tv_bottom_fourth:
-                Toast.makeText(this,"消息按钮", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(this,"消息按钮", Toast.LENGTH_SHORT).show();
+                intent = new Intent(this,bottom_fourth.class);
+                startActivity(intent);
                 break;
             case R.id.tv_bottom_fifth:
                 intent = new Intent(this,activity_Login.class);
                 startActivity(intent);
                 break;
         }
+        if (v.getId() != R.id.tv_bottom_fifth)
+            finish();
     }
 
     private void initBottomView() {
