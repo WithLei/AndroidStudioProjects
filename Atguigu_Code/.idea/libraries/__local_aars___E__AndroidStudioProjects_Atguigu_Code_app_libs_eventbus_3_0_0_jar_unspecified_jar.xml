@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="__local_aars__:E.\AndroidStudioProjects\Atguigu_Code\app\libs\eventbus-3.0.0.jar:unspecified@jar">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/app/libs/eventbus-3.0.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/app/libs/eventbus-3.0.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
