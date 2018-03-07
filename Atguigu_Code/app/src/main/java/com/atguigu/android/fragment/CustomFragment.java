@@ -6,7 +6,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.TextView;
 
-import com.atguigu.android.okhttp.base.BaseFragment;
+import com.atguigu.android.base.BaseFragment;
 
 /**
  * 作者：尚硅谷-杨光福 on 2016/7/21 19:27

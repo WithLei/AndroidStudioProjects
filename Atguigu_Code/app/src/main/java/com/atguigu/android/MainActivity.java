@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.widget.RadioGroup;
 
-import com.atguigu.android.okhttp.base.BaseFragment;
+import com.atguigu.android.base.BaseFragment;
 import com.atguigu.android.fragment.CommonFrameFragment;
 import com.atguigu.android.fragment.CustomFragment;
 import com.atguigu.android.fragment.OtherFragment;
