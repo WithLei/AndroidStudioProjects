@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
+        Intent intent;
         switch (v.getId()){
             case R.id.btn_main_first:
                 //基本用法
@@ -47,26 +48,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 //普通加载图片
                 Picasso.with(MainActivity.this)
                         .load("https://www.baidu.com/img/baidu_jgylogo3.gif")
+                        .error(R.drawable.user4)
                         .into(iv_main_first);
                 //裁剪的方式加载图片
                 Picasso.with(MainActivity.this)
                         .load("https://i0.hdslb.com/bfs/archive/aed2a8893a08f0ed8f9638023b4d2639ec3b064c.jpg")
                         .resize(100,100)
+                        .error(R.drawable.user4)
                         .into(iv_main_second);
                 //旋转180度
                 Picasso.with(MainActivity.this)
                         .load("https://i0.hdslb.com/bfs/archive/aed2a8893a08f0ed8f9638023b4d2639ec3b064c.jpg")
                         .rotate(180)
+                        .error(R.drawable.user4)
                         .into(iv_main_third);
 
 //                Intent intent = new Intent();
 //                startActivity(intent);
                 break;
             case R.id.btn_main_second:
-                Intent intent = new Intent(MainActivity.this,ListviewPicasso.class);
+                intent = new Intent(MainActivity.this,ListviewPicasso.class);
                 startActivity(intent);
                 break;
             case R.id.btn_main_third:
+                intent = new Intent(MainActivity.this,picassotranfromation.class);
+                startActivity(intent);
                 break;
         }
     }

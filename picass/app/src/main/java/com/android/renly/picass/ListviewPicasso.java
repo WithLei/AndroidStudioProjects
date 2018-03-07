@@ -22,8 +22,8 @@ public class ListviewPicasso extends AppCompatActivity {
     }
 
     private void initData() {
-        PicassoListviewAdapter picassoListviewAdapter = new PicassoListviewAdapter(this);
+        picassoListviewAdapter ListviewAdapter = new picassoListviewAdapter(this);
 
-        lvPicassoList.setAdapter(picassoListviewAdapter);
+        lvPicassoList.setAdapter(ListviewAdapter);
     }
 }
