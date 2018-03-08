@@ -59,7 +59,13 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="3210">
               <caret line="136" column="19" lean-forward="false" selection-start-line="136" selection-start-column="19" selection-end-line="136" selection-end-column="19" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#2172#2173#0" expanded="false" />
+                <element signature="e#2218#2219#0" expanded="false" />
+                <element signature="e#2275#2276#0" expanded="false" />
+                <element signature="e#2324#2325#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -97,7 +103,7 @@
       <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/okhttpserver/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
+            <state relative-caret-position="540">
               <caret line="18" column="1" lean-forward="false" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
               <folding />
             </state>
@@ -107,9 +113,11 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/atguigu/android/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="562">
+            <state relative-caret-position="4140">
               <caret line="151" column="38" lean-forward="false" selection-start-line="151" selection-start-column="38" selection-end-line="151" selection-end-column="38" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -117,17 +125,16 @@
       <file leaf-file-name="CommonFrameFragment.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/atguigu/android/fragment/CommonFrameFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="448">
+            <state relative-caret-position="930">
               <caret line="41" column="49" lean-forward="false" selection-start-line="41" selection-start-column="49" selection-end-line="41" selection-end-column="49" />
               <folding>
-                <element signature="e#1060#1586#0" expanded="true" />
-                <element signature="e#1585#1586#0" expanded="true" />
+                <element signature="imports" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BaseFragment.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="BaseFragment.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/atguigu/android/base/BaseFragment.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="360">
@@ -139,21 +146,21 @@
       </file>
       <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-          <provider editor-type-id="android-manifest">
-            <state />
-          </provider>
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="720">
               <caret line="24" column="59" lean-forward="false" selection-start-line="24" selection-start-column="59" selection-end-line="24" selection-end-column="59" />
               <folding />
             </state>
           </provider>
+          <provider editor-type-id="android-manifest">
+            <state />
+          </provider>
         </entry>
       </file>
-      <file leaf-file-name="OKHttpActivity.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="OKHttpActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/atguigu/android/activity/OKHttpActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3780">
+            <state relative-caret-position="1834">
               <caret line="126" column="74" lean-forward="false" selection-start-line="126" selection-start-column="74" selection-end-line="126" selection-end-column="74" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -6756,8 +6763,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="AndroidView">
         <subPane>
           <PATH>
@@ -6810,7 +6816,8 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -6951,6 +6958,40 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Atguigu_Code" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Atguigu_Code" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="android" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="activity" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -6966,13 +7007,13 @@
     <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_AVD" value="1080x1920-xxhdpi-Nexus_5_API_17" />
     <property name="OverrideImplement.combined" value="true" />
     <property name="OverrideImplement.overriding.sorted" value="false" />
-    <property name="FullScreen" value="false" />
     <property name="DEBUGGABLE_DEVICE" value="x86_4_2_HVGA_slider_ADP1_API_17 [emulator-5554]" />
     <property name="DEBUGGABLE_PROCESS" value="com.atguigu.android" />
     <property name="SHOW_ALL_PROCESSES" value="false" />
     <property name="restartRequiresConfirmation" value="true" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/java/com/atguigu/android" />
     <property name="extract.method.default.visibility" value="private" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../okhttp-OkGo-master" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -7073,8 +7114,7 @@
       <option name="DEEP_LINK" value="" />
       <option name="ACTIVITY_CLASS" value="" />
       <method>
-        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1520432168546" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1520519828521" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -7187,10 +7227,7 @@
       </Profilers>
       <option name="DEEP_LINK" value="" />
       <option name="ACTIVITY_CLASS" value="" />
-      <method>
-        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1520432168546" />
-      </method>
+      <method />
     </configuration>
     <configuration default="false" name="app" type="AndroidRunConfigurationType" factoryName="Android App">
       <module name="app" />
@@ -7236,10 +7273,7 @@
       </Profilers>
       <option name="DEEP_LINK" value="" />
       <option name="ACTIVITY_CLASS" value="" />
-      <method>
-        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1520432168546" />
-      </method>
+      <method />
     </configuration>
     <configuration default="false" name="sample-okhttp" type="AndroidRunConfigurationType" factoryName="Android App">
       <module name="sample-okhttp" />
@@ -7285,10 +7319,7 @@
       </Profilers>
       <option name="DEEP_LINK" value="" />
       <option name="ACTIVITY_CLASS" value="" />
-      <method>
-        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1520432168546" />
-      </method>
+      <method />
     </configuration>
     <list size="3">
       <item index="0" class="java.lang.String" itemvalue="Android App.OkHttpUtils-master" />
@@ -7430,20 +7461,19 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1840" height="1098" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3355049" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3355049" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30647987" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -7451,8 +7481,8 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18510158" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28371277" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -7598,7 +7628,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1440">
           <caret line="48" column="36" lean-forward="false" selection-start-line="48" selection-start-column="29" selection-end-line="48" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
       <provider editor-type-id="android-designer2">
@@ -7684,13 +7713,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-v23/values-v23.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-v23/values-v23.xml" />
     <entry file="jar://C:/Android_studio_sdk/platforms/android-22/android.jar!/org/apache/http/client/HttpClient.class" />
     <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
@@ -7802,7 +7825,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1440">
           <caret line="48" column="36" lean-forward="false" selection-start-line="48" selection-start-column="29" selection-end-line="48" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
       <provider editor-type-id="android-designer2">
@@ -7811,24 +7833,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/atguigu/android/adapter/OKHttpListAdapter.java" />
     <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider editor-type-id="android-manifest">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="720">
           <caret line="24" column="59" lean-forward="false" selection-start-line="24" selection-start-column="59" selection-end-line="24" selection-end-column="59" />
           <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/atguigu/android/activity/OKHttpActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3780">
-          <caret line="126" column="74" lean-forward="false" selection-start-line="126" selection-start-column="74" selection-end-line="126" selection-end-column="74" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
+      <provider editor-type-id="android-manifest">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/atguigu/android/uitls/CacheUtils.java" />
@@ -7836,7 +7848,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3210">
           <caret line="136" column="19" lean-forward="false" selection-start-line="136" selection-start-column="19" selection-end-line="136" selection-end-column="19" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#2172#2173#0" expanded="false" />
+            <element signature="e#2218#2219#0" expanded="false" />
+            <element signature="e#2275#2276#0" expanded="false" />
+            <element signature="e#2324#2325#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -7866,7 +7884,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/okhttpserver/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
+        <state relative-caret-position="540">
           <caret line="18" column="1" lean-forward="false" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
           <folding />
         </state>
@@ -7874,19 +7892,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/atguigu/android/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="562">
+        <state relative-caret-position="4140">
           <caret line="151" column="38" lean-forward="false" selection-start-line="151" selection-start-column="38" selection-end-line="151" selection-end-column="38" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/atguigu/android/fragment/CommonFrameFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="448">
+        <state relative-caret-position="930">
           <caret line="41" column="49" lean-forward="false" selection-start-line="41" selection-start-column="49" selection-end-line="41" selection-end-column="49" />
           <folding>
-            <element signature="e#1060#1586#0" expanded="true" />
-            <element signature="e#1585#1586#0" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -7896,6 +7915,16 @@
         <state relative-caret-position="360">
           <caret line="21" column="22" lean-forward="false" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="22" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/atguigu/android/activity/OKHttpActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1834">
+          <caret line="126" column="74" lean-forward="false" selection-start-line="126" selection-start-column="74" selection-end-line="126" selection-end-column="74" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
