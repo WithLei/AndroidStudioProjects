@@ -135,7 +135,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 requestQueue2.add(imageRequest);
                 break;
             case R.id.btn_volly_imageloader:
-                Toast.makeText(MainActivity.this,"imageloader",Toast.LENGTH_LONG).show();
+
                 break;
         }
     }
