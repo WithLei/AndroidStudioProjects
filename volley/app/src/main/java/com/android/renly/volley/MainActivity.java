@@ -135,7 +135,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 requestQueue2.add(imageRequest);
                 break;
             case R.id.btn_volly_imageloader:
-
+                //imageloader加载数据
+                //创建一个请求队列
+                //创建一个imagelader请求
+                //将imageloader请求加入队列
                 break;
         }
     }
