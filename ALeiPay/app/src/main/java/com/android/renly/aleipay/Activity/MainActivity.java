@@ -2,13 +2,17 @@ package com.android.renly.aleipay.Activity;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.renly.aleipay.Fragment.HomeFragment;
 import com.android.renly.aleipay.Fragment.InvestFragment;
@@ -55,6 +59,7 @@ public class MainActivity extends FragmentActivity {
         ButterKnife.bind(this);
 
         //默认显示首页
+        setSelect(0);
     }
 
     @OnClick({R.id.ll_main_bottom_mainpage,R.id.ll_main_bottom_invest,R.id.ll_main_bottom_me,R.id.ll_main_bottom_more})
@@ -159,4 +164,40 @@ public class MainActivity extends FragmentActivity {
         }
 
     }
+
+    //重写onkeyup()
+
+    private static final int WHAT_RESET_BACK = 1;
+    private boolean flag = true;
+    Handler handler = new Handler(){
+        public void handlerMessage(Message msg){
+            switch (msg.what){
+                case WHAT_RESET_BACK:
+                    flag = true;//复原
+                    break;
+            }
+        }
+    };
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //移除所有的未被执行的消息
+        handler.removeCallbacksAndMessages(null);
+    }
+
+    @Override
+    public boolean onKeyUp(int keyCode, KeyEvent event) {
+        if(keyCode == KeyEvent.KEYCODE_BACK && flag){
+            Toast.makeText(this,"再点击一次退出当前应用",Toast.LENGTH_SHORT).show();
+            flag = false;
+            //发送延迟消息
+            handler.sendEmptyMessageDelayed(WHAT_RESET_BACK,2000);
+            return true;
+        }
+        //为了避免出现内存的泄露，需要在onDestroy()中，移除所有未被执行的消息
+
+        return super.onKeyUp(keyCode, event);
+    }
+
 }
