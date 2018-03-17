@@ -16,6 +16,7 @@
         android:orientation="horizontal">
 
         <LinearLayout
+            android:id="@+id/ll_main_bottom_mainpage"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -38,6 +39,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/ll_main_bottom_invest"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -60,6 +62,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/ll_main_bottom_me"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -82,6 +85,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/ll_main_bottom_more"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
