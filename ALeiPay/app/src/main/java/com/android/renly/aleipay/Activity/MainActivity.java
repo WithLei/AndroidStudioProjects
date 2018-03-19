@@ -1,12 +1,16 @@
 package com.android.renly.aleipay.Activity;
 
 import android.app.Activity;
+import android.app.ActivityManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
@@ -198,6 +202,50 @@ public class MainActivity extends FragmentActivity {
         //为了避免出现内存的泄露，需要在onDestroy()中，移除所有未被执行的消息
 
         return super.onKeyUp(keyCode, event);
+    }
+
+    //当出现未捕获的异常时，能够给用户一个相对友好的提示
+    //在出现异常时，能够将异常信息发送给后台，便于在后续的版本中解决Bug
+    @Override
+    public void UncaughtException(Thread thread,Throwable ex){
+        new Thread(){
+            public void run(){
+                Looper.prepare();
+                Toast.makeText(MainActivity.this, "出现了未捕获的异常", Toast.LENGTH_SHORT).show();
+                Looper.loop();
+            }
+        }.start();
+
+        //收集异常信息
+        collectionException(ex);
+
+        try{
+            Thread.sleep(2000);
+
+            //移除当前Activity
+            ActivityManager.getInstance().removeCurrent();
+            //结束当前的进程
+            android.os.Process.killProcess(android.os.Process.myPid());
+            //结束虚拟机
+            System.exit(0);
+        }
+        catch(InterruptedException e){
+            e.printStackTrace();
+        }
+
+    }
+
+    private void collectionException(Throwable ex) {
+        final String exMessage = ex.getMessage();
+        //收集具体的用户的手机的信息
+        String message = Build.DEVICE + ":" + Build.MODEL + ":" + Build.PRODUCT;
+        //发送给后台此异常信息
+        new Thread(){
+            @Override
+            public void run() {
+                Log.e("TAG","test",ex);
+            }
+        }
     }
 
 }
