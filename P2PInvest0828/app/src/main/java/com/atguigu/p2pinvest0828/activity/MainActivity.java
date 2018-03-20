@@ -6,7 +6,6 @@ import android.os.Message;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -17,10 +16,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.atguigu.p2pinvest0828.R;
+import com.atguigu.p2pinvest0828.common.ActivityManager;
 import com.atguigu.p2pinvest0828.fragment.HomeFragment;
 import com.atguigu.p2pinvest0828.fragment.InvestFragment;
 import com.atguigu.p2pinvest0828.fragment.MeFragment;
 import com.atguigu.p2pinvest0828.fragment.MoreFragment;
+import com.atguigu.p2pinvest0828.util.UIUtils;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -63,8 +64,22 @@ public class MainActivity extends FragmentActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
+        //将当前的activity添加到ActivityManager中
+        ActivityManager.getInstance().add(this);
+
         //默认显示首页
         setSelect(0);
+
+        //模拟异常
+//        String str = null;
+        //try {
+//            if(str.equals("abc")){
+//                Log.e("TAG", "abc");
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+
     }
 
     @OnClick({R.id.ll_main_home,R.id.ll_main_invest,R.id.ll_main_me,R.id.ll_main_more})
@@ -111,7 +126,7 @@ public class MainActivity extends FragmentActivity {
                 //改变选中项的图片和文本颜色的变化
                 ivMainHome.setImageResource(R.drawable.bottom02);
 //                tvMainHome.setTextColor(R.color.text_progress);//错误的写法
-                tvMainHome.setTextColor(getResources().getColor(R.color.home_back_selected));
+                tvMainHome.setTextColor(UIUtils.getColor(R.color.home_back_selected));
 
                 break;
             case 1 :
@@ -123,7 +138,7 @@ public class MainActivity extends FragmentActivity {
 
                 //改变选中项的图片和文本颜色的变化
                 ivMainInvest.setImageResource(R.drawable.bottom04);
-                tvMainInvest.setTextColor(getResources().getColor(R.color.home_back_selected));
+                tvMainInvest.setTextColor(UIUtils.getColor(R.color.home_back_selected));
 
                 break;
             case 2 :
@@ -135,7 +150,7 @@ public class MainActivity extends FragmentActivity {
 
                 //改变选中项的图片和文本颜色的变化
                 ivMainMe.setImageResource(R.drawable.bottom06);
-                tvMainMe.setTextColor(getResources().getColor(R.color.home_back_selected01));
+                tvMainMe.setTextColor(UIUtils.getColor(R.color.home_back_selected01));
 
                 break;
             case 3 :
@@ -147,7 +162,7 @@ public class MainActivity extends FragmentActivity {
 
                 //改变选中项的图片和文本颜色的变化
                 ivMainMore.setImageResource(R.drawable.bottom08);
-                tvMainMore.setTextColor(getResources().getColor(R.color.home_back_selected));
+                tvMainMore.setTextColor(UIUtils.getColor(R.color.home_back_selected));
 
                 break;
         }
@@ -160,12 +175,12 @@ public class MainActivity extends FragmentActivity {
         ivMainMe.setImageResource(R.drawable.bottom05);
         ivMainMore.setImageResource(R.drawable.bottom07);
 
-        tvMainHome.setTextColor(getResources().getColor(R.color.home_back_unselected));
-        tvMainInvest.setTextColor(getResources().getColor(R.color.home_back_unselected));
-        tvMainMe.setTextColor(getResources().getColor(R.color.home_back_unselected));
-        tvMainMore.setTextColor(getResources().getColor(R.color.home_back_unselected));
+        tvMainHome.setTextColor(UIUtils.getColor(R.color.home_back_unselected));
+        tvMainInvest.setTextColor(UIUtils.getColor(R.color.home_back_unselected));
+        tvMainMe.setTextColor(UIUtils.getColor(R.color.home_back_unselected));
+        tvMainMore.setTextColor(UIUtils.getColor(R.color.home_back_unselected));
         //这种方式也可以
-        tvMainMore.setTextColor(ContextCompat.getColor(this, R.color.home_back_unselected));
+//        tvMainMore.setTextColor(ContextCompat.getColor(this, R.color.home_back_unselected));
     }
 
     private void hideFragments() {

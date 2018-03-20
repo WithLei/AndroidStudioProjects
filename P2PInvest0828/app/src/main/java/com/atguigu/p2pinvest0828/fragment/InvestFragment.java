@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.atguigu.p2pinvest0828.R;
+import com.atguigu.p2pinvest0828.util.UIUtils;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -29,7 +30,8 @@ public class InvestFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = View.inflate(getActivity(), R.layout.fragment_invest, null);
+//        View view = View.inflate(getActivity(), R.layout.fragment_invest, null);
+        View view = UIUtils.getView(R.layout.fragment_invest);
         ButterKnife.bind(this, view);
 
         initTitle();

@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.renly.aleipay.R;
+import com.youth.banner.Banner;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -24,6 +25,12 @@ public class HomeFragment extends Fragment {
     TextView tvTitle;
     @Bind(R.id.iv_title_setting)
     ImageView ivTitleSetting;
+    @Bind(R.id.banner)
+    Banner banner;
+    @Bind(R.id.tv_home_product)
+    TextView tvHomeProduct;
+    @Bind(R.id.tv_home_yearrate)
+    TextView tvHomeYearrate;
 
     @Nullable
     @Override
@@ -33,6 +40,7 @@ public class HomeFragment extends Fragment {
         initTitle();
         return view;
     }
+
     private void initTitle() {
         ivTitleBack.setVisibility(View.GONE);
         tvTitle.setText("首页");
