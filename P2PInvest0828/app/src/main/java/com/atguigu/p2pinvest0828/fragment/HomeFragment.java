@@ -59,6 +59,7 @@ public class HomeFragment extends Fragment {
         View view = UIUtils.getView(R.layout.fragment_home);//context实例：application
 //        View view = View.inflate(getActivity(), R.layout.fragment_home, null);//context实例：activity
         ButterKnife.bind(this, view);
+        Toast.makeText(HomeFragment.this,"test",Toast.LENGTH_SHORT).show();
 
         //初始化title
         initTitle();
