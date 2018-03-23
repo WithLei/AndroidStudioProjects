@@ -23,6 +23,7 @@ import com.android.renly.aleipay.Fragment.InvestFragment;
 import com.android.renly.aleipay.Fragment.MeFragment;
 import com.android.renly.aleipay.Fragment.MoreFragment;
 import com.android.renly.aleipay.R;
+import com.android.renly.aleipay.common.AppManager;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -61,6 +62,9 @@ public class MainActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
+        //将当前的Activity添加到栈管理中
+        AppManager.getInstance().addActivity(this);
 
         //默认显示首页
         setSelect(0);
