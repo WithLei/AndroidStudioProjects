@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:atguigu="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
     <include layout="@layout/common_title"></include>
 
-    <ScrollView
+    <com.atguigu.p2pinvest0828.ui.MyScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -97,11 +98,19 @@
             </LinearLayout>
 
 
-            <Button
+            <com.atguigu.p2pinvest0828.ui.RoundProgress
+                android:id="@+id/roundPro_home"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:layout_marginTop="10dp"
-                android:text="我是圆形进度条" />
+                atguigu:roundColor="@color/more_text"
+                atguigu:roundProgressColor="@color/round_red_common"
+                atguigu:textColor="@color/title_back"
+                atguigu:textSize="20dp"
+                atguigu:roundWith="10dp"
+                atguigu:max="100"
+                atguigu:progress="70"
+                 />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -155,6 +164,6 @@
         </LinearLayout>
 
 
-    </ScrollView>
+    </com.atguigu.p2pinvest0828.ui.MyScrollView>
 
 </LinearLayout>

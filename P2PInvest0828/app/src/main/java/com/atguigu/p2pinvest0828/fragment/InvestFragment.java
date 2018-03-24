@@ -1,24 +1,19 @@
 package com.atguigu.p2pinvest0828.fragment;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.atguigu.p2pinvest0828.R;
-import com.atguigu.p2pinvest0828.util.UIUtils;
+import com.atguigu.p2pinvest0828.common.BaseFragment;
+import com.loopj.android.http.RequestParams;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 
 /**
  * Created by shkstart on 2016/11/30 0030.
  */
-public class InvestFragment extends Fragment {
+public class InvestFragment extends BaseFragment {
 
     @Bind(R.id.iv_title_back)
     ImageView ivTitleBack;
@@ -27,26 +22,32 @@ public class InvestFragment extends Fragment {
     @Bind(R.id.iv_title_setting)
     ImageView ivTitleSetting;
 
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-//        View view = View.inflate(getActivity(), R.layout.fragment_invest, null);
-        View view = UIUtils.getView(R.layout.fragment_invest);
-        ButterKnife.bind(this, view);
 
-        initTitle();
-        return view;
+
+    @Override
+    protected RequestParams getParams() {
+        return null;
     }
 
-    private void initTitle() {
+    @Override
+    protected String getUrl() {
+        return null;
+    }
+
+    @Override
+    protected void initData(String content) {
+
+    }
+
+    protected void initTitle() {
         ivTitleBack.setVisibility(View.GONE);
         tvTitle.setText("投资");
         ivTitleSetting.setVisibility(View.GONE);
     }
 
     @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        ButterKnife.unbind(this);
+    public int getLayoutId() {
+        return R.layout.fragment_invest;
     }
+
 }

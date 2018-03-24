@@ -1,9 +1,11 @@
 package com.atguigu.p2pinvest0828.fragment;
 
+import android.support.v4.app.Fragment;
+
 /**
  * Created by shkstart on 2016/11/30 0030.
  */
-//public class HomeFragment1 extends Fragment {
+public class HomeFragment1 extends Fragment {
 
 //    @Bind(R.id.iv_title_back)
 //    ImageView ivTitleBack;
@@ -117,4 +119,4 @@ package com.atguigu.p2pinvest0828.fragment;
 //
 //        }
 //    }
-//}
+}

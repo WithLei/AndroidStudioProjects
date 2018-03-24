@@ -122,6 +122,8 @@ public class MainActivity extends FragmentActivity {
                 }
                 //显示当前的fragment
                 transaction.show(homeFragment);
+                //错误的调用位置
+//                homeFragment.show();
 
                 //改变选中项的图片和文本颜色的变化
                 ivMainHome.setImageResource(R.drawable.bottom02);
@@ -167,6 +169,7 @@ public class MainActivity extends FragmentActivity {
                 break;
         }
         transaction.commit();//提交事务
+
     }
 
     private void resetTab() {
