@@ -7,5 +7,5 @@ package com.android.renly.aleipay.bean;
 public class Image {
     public String ID;
     public String IMAPAURL;
-    public String iMAURL;
+    public String IMAURL;
 }

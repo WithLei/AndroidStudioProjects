@@ -27,7 +27,10 @@
                 <com.youth.banner.Banner
                     android:id="@+id/banner"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="150dp"
+                    renly:indicator_height="7dp"
+                    renly:indicator_width="7dp"
+                    renly:indicator_margin="2dp"/>
             </FrameLayout>
 
             <TextView

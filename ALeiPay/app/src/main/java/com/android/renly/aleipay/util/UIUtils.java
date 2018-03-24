@@ -2,6 +2,7 @@ package com.android.renly.aleipay.util;
 
 import android.content.Context;
 import android.os.Handler;
+import android.view.View;
 
 import com.android.renly.aleipay.common.MyApplication;
 
@@ -25,6 +26,11 @@ public class UIUtils {
 
     public static String[] getStringArr(int arrID) {
         return getContext().getResources().getStringArray(arrID);
+    }
+
+    public static View getView(int viewID){
+        View view = View.inflate(getContext(),viewID,null);
+        return view;
     }
 
     //与屏幕分辨率相关的

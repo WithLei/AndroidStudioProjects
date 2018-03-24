@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.renly.aleipay.R;
+import com.android.renly.aleipay.common.BaseFragment;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -18,7 +19,7 @@ import butterknife.ButterKnife;
  * Created by Renly on 2018/3/17.
  */
 
-public class MoreFragment extends Fragment {
+public class MoreFragment extends BaseFragment {
     @Bind(R.id.iv_title_back)
     ImageView ivTitleBack;
     @Bind(R.id.tv_title)
@@ -26,20 +27,22 @@ public class MoreFragment extends Fragment {
     @Bind(R.id.iv_title_setting)
     ImageView ivTitleSetting;
 
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = View.inflate(getActivity(), R.layout.fragment_more, null);
-        ButterKnife.bind(this, view);
-        initTitle();
-        return view;
-    }
-
-    private void initTitle() {
+    public void initTitle() {
         ivTitleBack.setVisibility(View.GONE);
         tvTitle.setText("设置");
         ivTitleSetting.setVisibility(View.GONE);
     }
+
+    @Override
+    protected void initData() {
+
+    }
+
+    @Override
+    public int getLayoutid() {
+        return R.layout.fragment_more;
+    }
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
