@@ -6,6 +6,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import com.android.renly.aleipay.R;
 import com.android.renly.aleipay.util.UIUtils;
@@ -83,6 +84,7 @@ public abstract class LoadingPage extends FrameLayout {
             @Override
             public void run() {
                 showPage();
+                Toast.makeText(this, "test", Toast.LENGTH_SHORT).show();
             }
         });
     }
