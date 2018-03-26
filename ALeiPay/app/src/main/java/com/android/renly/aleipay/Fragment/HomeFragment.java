@@ -17,8 +17,10 @@ import com.android.renly.aleipay.R;
 import com.android.renly.aleipay.bean.Image;
 import com.android.renly.aleipay.bean.Index;
 import com.android.renly.aleipay.bean.Product;
+import com.android.renly.aleipay.common.AppNetConfig;
 import com.android.renly.aleipay.common.BaseFragment;
 import com.android.renly.aleipay.ui.RoundProgress;
+import com.loopj.android.http.RequestParams;
 import com.squareup.picasso.Picasso;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
@@ -86,6 +88,16 @@ public class HomeFragment extends BaseFragment {
         }
     }
 
+    @Override
+    protected String getUrl() {
+        return AppNetConfig.INDEX;
+    }
+
+    @Override
+    protected RequestParams getParams() {
+        return new RequestParams();
+    }
+
     public void initTitle() {
         ivTitleBack.setVisibility(View.GONE);
         tvTitle.setText("首页");
@@ -93,7 +105,7 @@ public class HomeFragment extends BaseFragment {
     }
 
     @Override
-    public void initData() {
+    protected void initData(String content) {
         index = new Index();
         //解析json数据：GSON / FASTJSON
         JSONObject jsonObject = JSON.parseObject(content);

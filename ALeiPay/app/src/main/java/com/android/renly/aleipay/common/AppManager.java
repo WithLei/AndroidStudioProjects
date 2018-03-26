@@ -23,7 +23,8 @@ public class AppManager {
     }
 
     public void addActivity(Activity activity){
-        activityStack.add(activity);
+        if(activity != null)
+            activityStack.add(activity);
     }
 
     public void removeActivity(Activity activity){

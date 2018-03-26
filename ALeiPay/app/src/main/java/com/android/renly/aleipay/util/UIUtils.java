@@ -44,4 +44,20 @@ public class UIUtils {
         float density = getContext().getResources().getDisplayMetrics().density;
         return (int) (px / density + 0.5);
     }
+
+    public static void runOnUiThread(Runnable runnable){
+        if(isMainThread()){
+            runnable.run();
+        }else{
+            getHandler().post(runnable);
+        }
+    }
+
+    private static boolean isMainThread() {
+        int myTid = android.os.Process.myTid();
+        if(myTid == MyApplication.mainThreadID){
+            return true;
+        }
+        return false;
+    }
 }

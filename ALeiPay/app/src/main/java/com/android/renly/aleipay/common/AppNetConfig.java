@@ -5,9 +5,13 @@ package com.android.renly.aleipay.common;
  */
 
 public class AppNetConfig {
-    public static final String HOST = "192.168.155.1";//提供IP地址
+    public static final String HOST = "60.176.38.140";//提供IP地址
 
-    public static final String BASE_URL = "http://" + HOST + ":8080/P2PInvest/";
+    //尚硅谷官方服务器后台
+//    public static final String IPADDRESS = "182.92.5.3";
+//    public static final String BASE_URL = "http://" + IPADDRESS + ":8081/P2PInvest/";
+//
+    public static final String BASE_URL = "http://" + HOST + ":8080/P2PInvest/";//本地后台地址
 
     public static final String INDEX = BASE_URL + "index";//访问首页数据
 

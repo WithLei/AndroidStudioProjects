@@ -27,7 +27,7 @@ public abstract class LoadingPage extends FrameLayout {
 
 
     //当前状态
-    private int state_current = 1;
+    private int state_current = STATE_LADING;
 
     //加载4种不同的界面
     private View loadingView;
@@ -35,8 +35,6 @@ public abstract class LoadingPage extends FrameLayout {
     private View emptyView;
     private View successView;
     private LayoutParams params;
-
-    AsyncHttpClient client = new AsyncHttpClient();
 
     private ResultState resultState = null;
 
@@ -54,7 +52,7 @@ public abstract class LoadingPage extends FrameLayout {
         init();
     }
 
-    protected void init(){
+    private void init(){
         //视图与布局的关联\
 
         params = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
@@ -84,63 +82,65 @@ public abstract class LoadingPage extends FrameLayout {
             @Override
             public void run() {
                 showPage();
-                Toast.makeText(this, "test", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
     private void showPage() {
         //需要主线程执行
-        loadingView.setVisibility(state_current == STATE_LADING ?
-        View.VISIBLE : View.GONE);
-        errorView.setVisibility(state_current == STATE_ERROR ?
-        View.VISIBLE : View.GONE);
-        emptyView.setVisibility(state_current == STATE_EMPTY ?
-        View.VISIBLE : View.GONE);
+        loadingView.setVisibility(state_current == STATE_LADING ? View.VISIBLE : View.GONE);
+        errorView.setVisibility(state_current == STATE_ERROR ? View.VISIBLE : View.GONE);
+        emptyView.setVisibility(state_current == STATE_EMPTY ? View.VISIBLE : View.GONE);
 
         if(successView == null){
             successView = UIUtils.getView(layoutID());
             addView(successView,params);
         }
-        successView.setVisibility(state_current == STATE_SUCCESS ?
-        View.VISIBLE : View.GONE);
+        successView.setVisibility(state_current == STATE_SUCCESS ? View.VISIBLE : View.GONE);
     }
 
     public void show(){
-        //初始化当前状态
-        if(state_current != STATE_LADING){
-            state_current = STATE_LADING;
+        String url = url();
+        if (TextUtils.isEmpty(url)) {
+            resultState = ResultState.SUCCESS;
+            resultState.setContent("");
+            return;
         }
 
-        String url = url();
-        if(TextUtils.isEmpty(url)){
-            resultState = resultState.SUCCESS;
-            resultState.setContent("");
-            loadPage();
-        }else{
-            client.get(url,params(),new AsyncHttpResponseHandler(){
-                @Override
-                public void onSuccess(String content) {
-                    if(TextUtils.isEmpty(content)){
-                        resultState = ResultState.EMPTY;
-                        resultState.setContent("");
-                    }else{
-                        resultState = ResultState.SUCCESS;
-                        resultState.setContent(content);
+        UIUtils.getHandler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                AsyncHttpClient client = new AsyncHttpClient();
+                client.get(url(), params(), new AsyncHttpResponseHandler() {
+                    @Override
+                    public void onSuccess(String content) {
+                        if (TextUtils.isEmpty(content)) {// "" or null
+//                    state_current = STATE_EMPTY;
+                            resultState = ResultState.EMPTY;
+                            resultState.setContent("");
+                        } else {
+//                    state_current = STATE_SUCCESS;
+                            resultState = ResultState.SUCCESS;
+                            resultState.setContent(content);
+                        }
+
+//                showSafePage();
+                        loadPage();
                     }
 
-                    loadPage();
-                }
+                    @Override
+                    public void onFailure(Throwable error, String content) {
+//                state_current = STATE_ERROR;
+                        resultState = ResultState.ERROR;
+                        resultState.setContent("");
 
-                @Override
-                public void onFailure(Throwable error, String content) {
-                    resultState = ResultState.ERROR;
-                    resultState.setContent("");
+//                showSafePage();
+                        loadPage();
 
-                    loadPage();
-                }
-            });
-        }
+                    }
+                });
+            }
+        }, 2000);
     }
 
     private void loadPage() {
@@ -185,8 +185,7 @@ public abstract class LoadingPage extends FrameLayout {
 
     protected abstract String url();
 
-    protected abstract void onSuccess(ResultState resultState,View
-                                      successView);
+    protected abstract void onSuccess(ResultState resultState,View successView);
     public abstract int layoutID();
 
 

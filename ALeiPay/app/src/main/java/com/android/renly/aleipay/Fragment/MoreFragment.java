@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.android.renly.aleipay.R;
 import com.android.renly.aleipay.common.BaseFragment;
+import com.loopj.android.http.RequestParams;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -27,6 +28,16 @@ public class MoreFragment extends BaseFragment {
     @Bind(R.id.iv_title_setting)
     ImageView ivTitleSetting;
 
+    @Override
+    protected String getUrl() {
+        return null;
+    }
+
+    @Override
+    protected RequestParams getParams() {
+        return null;
+    }
+
     public void initTitle() {
         ivTitleBack.setVisibility(View.GONE);
         tvTitle.setText("设置");
@@ -34,7 +45,7 @@ public class MoreFragment extends BaseFragment {
     }
 
     @Override
-    protected void initData() {
+    protected void initData(String content) {
 
     }
 
