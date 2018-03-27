@@ -20,12 +20,12 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        context = getApplicationContext();
+        context = this.getApplicationContext();
         handler = new Handler();
         mainThread = Thread.currentThread();
         mainThreadID = android.os.Process.myTid();
 
         //初始化当前的异常处理器
-        CrashHandler.getInstance().init(this);
+//        CrashHandler.getInstance().init(this);
     }
 }

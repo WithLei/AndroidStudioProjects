@@ -12,6 +12,7 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.android.renly.aleipay.R;
+import com.android.renly.aleipay.common.AppManager;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -30,9 +31,10 @@ public class Welcome extends AppCompatActivity {
             super.handleMessage(msg);
             switch (msg.what) {
                 case LEAVE_WELCOMEPAGE:
-                    finish();
+//                    finish();
                     Intent intent = new Intent(Welcome.this, MainActivity.class);
                     startActivity(intent);
+                    AppManager.getInstance().remove(Welcome.this);
                     break;
 
             }
@@ -49,6 +51,8 @@ public class Welcome extends AppCompatActivity {
         // 隐藏顶部的状态栏
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_welcome);
+        //将当前的activity添加到ActivityManager中
+        AppManager.getInstance().addActivity(this);
 
         ButterKnife.bind(this);
         handler.sendEmptyMessageDelayed(LEAVE_WELCOMEPAGE,5000);

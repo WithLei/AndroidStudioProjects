@@ -55,8 +55,7 @@ public abstract class LoadingPage extends FrameLayout {
     private void init(){
         //视图与布局的关联\
 
-        params = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
+        params = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         if(loadingView == null){
             loadingView = UIUtils.getView(R.layout.page_loading);
             addView(loadingView,params);

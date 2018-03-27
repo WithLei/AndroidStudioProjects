@@ -37,6 +37,27 @@ public class AppManager {
         }
     }
 
+    //删除指定的activity
+    public void remove(Activity activity){
+        if(activity != null){
+//            for(int i = 0; i < activityStack.size(); i++) {
+//                Activity currentActivity = activityStack.get(i);
+//                if(currentActivity.getClass().equals(activity.getClass())){
+//                    currentActivity.finish();//销毁当前的activity
+//                    activityStack.remove(i);//从栈空间移除
+//                }
+//            }
+
+            for(int i = activityStack.size() - 1;i >= 0;i--){
+                Activity currentActivity = activityStack.get(i);
+                if(currentActivity.getClass().equals(activity.getClass())){
+                    currentActivity.finish();//销毁当前的activity
+                    activityStack.remove(i);//从栈空间移除
+                }
+            }
+        }
+    }
+
     public void removeCurrrent(){
         Activity activity = activityStack.lastElement();
         activity.finish();

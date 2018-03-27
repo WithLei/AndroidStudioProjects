@@ -96,7 +96,7 @@ public abstract class BaseFragment extends Fragment {
         ButterKnife.unbind(this);
     }
 
-    public void show(){
+    private void show(){
         loadingPage.show();
     }
 }
