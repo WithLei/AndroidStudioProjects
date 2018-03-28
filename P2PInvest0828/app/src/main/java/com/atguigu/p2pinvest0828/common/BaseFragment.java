@@ -3,7 +3,6 @@ package com.atguigu.p2pinvest0828.common;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,7 +44,6 @@ public abstract class BaseFragment extends Fragment {
                 ButterKnife.bind(BaseFragment.this, view_success);
                 initTitle();
                 initData(resultState.getContent());
-                Log.e("TAG","content:" + resultState.getContent());
             }
 
             @Override
@@ -96,7 +94,7 @@ public abstract class BaseFragment extends Fragment {
         ButterKnife.unbind(this);
     }
 
-    private void show(){
+    public void show(){
         loadingPage.show();
     }
 }
