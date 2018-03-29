@@ -2,6 +2,7 @@ package com.android.renly.aleipay.util;
 
 import android.content.Context;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 
 import com.android.renly.aleipay.common.MyApplication;
@@ -13,6 +14,7 @@ import com.android.renly.aleipay.common.MyApplication;
 
 public class UIUtils {
     public static Context getContext() {
+        Log.e("TAG","package"+MyApplication.context.getPackageName());
         return MyApplication.context;
     }
 
@@ -29,7 +31,10 @@ public class UIUtils {
     }
 
     public static View getView(int viewID){
+        Log.e("TAG","1.viewID:"+viewID);
         View view = View.inflate(getContext(),viewID,null);
+        Log.e("TAG","2.viewID:"+viewID);
+
         return view;
     }
 
@@ -55,7 +60,7 @@ public class UIUtils {
 
     private static boolean isMainThread() {
         int myTid = android.os.Process.myTid();
-        if(myTid == MyApplication.mainThreadID){
+        if(myTid == MyApplication.mainThreadId){
             return true;
         }
         return false;

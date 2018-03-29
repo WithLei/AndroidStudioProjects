@@ -1,5 +1,6 @@
 package com.android.renly.aleipay.Activity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -17,7 +18,7 @@ import com.android.renly.aleipay.common.AppManager;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class Welcome extends AppCompatActivity {
+public class Welcome extends Activity {
 
     @Bind(R.id.iv_welcome_icon)
     ImageView ivWelcomeIcon;
@@ -45,9 +46,9 @@ public class Welcome extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         // 去掉窗口标题
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        if (getSupportActionBar() != null){
-            getSupportActionBar().hide();
-        }
+//        if (getSupportActionBar() != null){
+//            getSupportActionBar().hide();
+//        }
         // 隐藏顶部的状态栏
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_welcome);
