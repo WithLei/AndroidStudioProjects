@@ -36,11 +36,11 @@ public class RoundProgress extends View{
     private Paint paint;//画笔
 
     public RoundProgress(Context context) {
-        super(context);
+        this(context,null);
     }
 
     public RoundProgress(Context context, @Nullable AttributeSet attrs) {
-        super(context, attrs);
+        this(context, attrs,0);
     }
 
     public RoundProgress(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
@@ -125,8 +125,6 @@ public class RoundProgress extends View{
         int y = width / 2 + rect.width() / 2;
 
         canvas.drawText(text,x,y,paint);
-
-        super.onDraw(canvas);
 
     }
 }

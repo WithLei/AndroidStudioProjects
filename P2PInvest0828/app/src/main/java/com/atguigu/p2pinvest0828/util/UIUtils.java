@@ -2,8 +2,8 @@ package com.atguigu.p2pinvest0828.util;
 
 import android.content.Context;
 import android.os.Handler;
-import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.atguigu.p2pinvest0828.common.MyApplication;
 
@@ -28,9 +28,7 @@ public class UIUtils {
 
     //加载指定viewId的视图对象，并返回
     public static View getView(int viewId){
-        Log.e("TAG","1.viewId:"+viewId);
         View view = View.inflate(getContext(), viewId, null);
-        Log.e("TAG","2.viewID:"+viewId);
         return view;
     }
 
@@ -65,5 +63,9 @@ public class UIUtils {
         int currentThreadId = android.os.Process.myTid();
         return MyApplication.mainThreadId == currentThreadId;
 
+    }
+
+    public static void toast(String message,boolean isLengthLong){
+        Toast.makeText(UIUtils.getContext(), message,isLengthLong? Toast.LENGTH_LONG : Toast.LENGTH_SHORT).show();
     }
 }

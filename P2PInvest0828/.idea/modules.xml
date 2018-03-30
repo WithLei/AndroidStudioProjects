@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/P2PInvest0828.iml" filepath="$PROJECT_DIR$/P2PInvest0828.iml" />
       <module fileurl="file://$PROJECT_DIR$/ViewPagerIndicator/ViewPagerIndicator.iml" filepath="$PROJECT_DIR$/ViewPagerIndicator/ViewPagerIndicator.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/contexttest/contexttest.iml" filepath="$PROJECT_DIR$/contexttest/contexttest.iml" />
     </modules>
   </component>
 </project>

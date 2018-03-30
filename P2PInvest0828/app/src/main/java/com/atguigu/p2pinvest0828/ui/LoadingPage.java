@@ -33,7 +33,7 @@ public abstract class LoadingPage extends FrameLayout {
     private View view_success;
     private LayoutParams params;
 
-
+    private Context mContext;
     public LoadingPage(Context context) {
         this(context, null);
     }
@@ -44,6 +44,8 @@ public abstract class LoadingPage extends FrameLayout {
 
     public LoadingPage(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+
+        this.mContext = context;
 
         init();
     }
@@ -96,7 +98,8 @@ public abstract class LoadingPage extends FrameLayout {
         view_empty.setVisibility(state_current == STATE_EMPTY ? View.VISIBLE : View.INVISIBLE);
 
         if (view_success == null) {
-            view_success = UIUtils.getView(layoutId());
+//            view_success = UIUtils.getView(layoutId());//加载布局使用的是Application
+            view_success = View.inflate(mContext,layoutId(),null);//加载布局使用的是activity
             addView(view_success, params);
         }
 
@@ -114,6 +117,7 @@ public abstract class LoadingPage extends FrameLayout {
         if (TextUtils.isEmpty(url)) {
             resultState = ResultState.SUCCESS;
             resultState.setContent("");
+            loadImage();//修改state_current，并且决定加载哪个页面：showSafePage()
             return;
         }
 
