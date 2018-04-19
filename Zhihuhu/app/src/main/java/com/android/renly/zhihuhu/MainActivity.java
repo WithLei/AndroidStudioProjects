@@ -222,7 +222,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //根据图片路径启动分线程动态请求服务加载图片并显示
             imageLoader.loadImage(imagePath,iv_item_headphoto);
             Log.e("TAG","Success--finishConvert!!!!");
-            return convertView;
+            return convertView;re
         }
     }
 

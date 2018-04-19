@@ -1,18 +1,16 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion '26.0.2'
+    compileSdkVersion 26
 
     defaultConfig {
         applicationId "com.atguigu.p2pinvest0828"
         minSdkVersion 16
-        targetSdkVersion 23
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
         flavorDimensions "versionCode"
         javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
-
     }
     buildTypes {
         release {
@@ -58,9 +56,19 @@ android {
     productFlavors.all { flavor ->
         flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
     }
-    applicationVariants.all { variant ->
-        variant.outputs.all {
-            outputFileName = "P2PInvest.apk"
+//    applicationVariants.all { variant ->
+//        variant.outputs.each { output ->
+//            def outputFile = output.outputFile
+//            if (outputFile != null && outputFile.name.endsWith('.apk')) {
+//                def fileName = outputFile.name.replace(".apk", "-${defaultConfig.versionName}.apk")
+//                output.outputFile = new File(outputFile.parent, fileName)
+//            }
+//        }
+//    }
+    android.applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            def outputFile = output.outputFile
+            outputFileName = outputFile.name.replace(".apk", "-${defaultConfig.versionName}.apk")
         }
     }
 }
@@ -68,7 +76,7 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.4.0'
+    implementation 'com.android.support:appcompat-v7:26.1.0'
     compile 'com.jakewharton:butterknife:7.0.1'
     compile files('libs/android-async-http-master.jar')
     compile 'com.squareup.picasso:picasso:2.5.2'

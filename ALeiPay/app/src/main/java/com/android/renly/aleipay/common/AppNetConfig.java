@@ -5,7 +5,7 @@ package com.android.renly.aleipay.common;
  */
 
 public class AppNetConfig {
-    public static final String HOST = "192.168.155.1";//提供IP地址
+    public static final String HOST = "172.20.10.6";//提供IP地址
 
     //尚硅谷官方服务器后台
 //    public static final String IPADDRESS = "182.92.5.3";

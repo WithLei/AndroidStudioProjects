@@ -6,7 +6,7 @@ package com.atguigu.p2pinvest0828.common;
  */
 public class AppNetConfig {
 
-    public static final String IPADDRESS = "192.168.191.1";
+    public static final String IPADDRESS = "172.20.10.6";
 
     public static final String BASE_URL = "http://" + IPADDRESS + ":8080/P2PInvest/";
 //如下的IPADDRESS可直接访问尚硅谷后台的服务器及数据库，不用在本地安装tomcat及mysql数据库

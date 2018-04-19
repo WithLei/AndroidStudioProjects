@@ -132,8 +132,14 @@ public class HomeFragment extends BaseFragment {
         //设置图片加载器
         banner.setImageLoader(new GlideImageLoader());
         //设置图片地址构成的集合
+//        ArrayList<String>imagesUrl = new ArrayList<>(4);
+//        imagesUrl.add("http://m.qpic.cn/psb?/V13Hh3Xy2gxYy4/D7gx6zteCgux70QDC*nRwyaHeYgg1Yju9Zd570YdMNs!/b/dPIAAAAAAAAA&bo=AAocAgAAAAARFzQ!&rf=viewer_4");
+//        imagesUrl.add("http://m.qpic.cn/psb?/V13Hh3Xy2gxYy4/DStr.yGNWRFrqYSGCFmQ42*xqrImIydbrZ74erwfpMo!/b/dPIAAAAAAAAA&bo=sAQYAQAAAAARF40!&rf=viewer_4");
+//        imagesUrl.add("http://m.qpic.cn/psb?/V13Hh3Xy2gxYy4/umhRQOXz6eIBa.p5DOq4bSHgej2r2R7pMop*x8c28yQ!/b/dFYBAAAAAAAA&bo=sAQYAQAAAAARF40!&rf=viewer_4");
+//        imagesUrl.add("http://m.qpic.cn/psb?/V13Hh3Xy2gxYy4/x5bOR*YlDgUeyzILeiva2RZMRQkoDHvj6KA*8GNdlf0!/b/dEUBAAAAAAAA&bo=AAocAgAAAAARFzQ!&rf=viewer_4");
         ArrayList<String> imagesUrl = new ArrayList<>(index.images.size());
         for(int i = 0;i < index.images.size();i++){
+
             imagesUrl.add(index.images.get(i).IMAURL);
         }
         banner.setImages(imagesUrl);
