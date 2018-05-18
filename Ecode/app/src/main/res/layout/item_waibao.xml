@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="130dp">
+
+    <LinearLayout
+        android:layout_marginTop="7dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:layout_marginBottom="5dp"
+        android:orientation="vertical"
+        android:background="@drawable/waibao_item_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="25dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="49dp"
+                android:layout_height="49dp"
+                android:src="@drawable/waibao_item_icon"
+                android:id="@+id/imageView" />
+
+            <TextView
+                android:id="@+id/tv_task"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="任务"
+                android:textColor="#ffffff"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:paddingBottom="2dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="240dp"
+            android:orientation="horizontal"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/item_star5"
+                android:layout_width="0dp"
+                android:layout_height="18dp"
+                android:layout_weight="1"
+                android:src="@drawable/star" />
+
+            <ImageView
+                android:id="@+id/item_star4"
+                android:src="@drawable/star"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="18dp" />
+
+            <ImageView
+                android:id="@+id/item_star3"
+                android:layout_width="0dp"
+                android:layout_height="18dp"
+                android:layout_weight="1"
+                android:src="@drawable/star" />
+
+            <ImageView
+                android:id="@+id/item_star2"
+                android:src="@drawable/star"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="18dp" />
+
+            <ImageView
+                android:id="@+id/item_star1"
+                android:src="@drawable/star"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="18dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

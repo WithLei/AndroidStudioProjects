@@ -1,0 +1,36 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            url 'https://maven.google.com/'
+            name 'Google'
+        }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.0.1'
+    }
+}
+
+allprojects {
+    repositories {
+        mavenCentral()
+        maven {
+            url 'https://maven.google.com/'
+            name 'Google'
+        }
+    }
+}
+
+// http://www.gradle.org/docs/current/dsl/org.gradle.api.plugins.ExtraPropertiesExtension.html
+project.ext {
+    ANDROID_COMPILE_SDK_VERSION = 23
+    ANDROID_BUILD_TOOLS_VERSION = "23.0.1"
+
+    ANDROID_MIN_SDK_VERSION = 8
+    ANDROID_TARGET_SDK_VERSION = 23
+
+    // Google Stuffs
+    supportPackageVersion = "23.1.1"
+}

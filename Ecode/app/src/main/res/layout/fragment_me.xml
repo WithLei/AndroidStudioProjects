@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/common_title"/>
+
+    <com.example.ecode.UI.MyScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:background="@drawable/me_user_bg"
+                android:layout_width="match_parent"
+                android:layout_height="150dp">
+
+                <ImageView
+                    android:id="@+id/user_icon"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="20dp"
+                    android:src="@drawable/me_user_icon" />
+
+                <TextView
+                    android:id="@+id/tv_user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/user_icon"
+                    android:layout_marginLeft="59dp"
+                    android:layout_marginStart="59dp"
+                    android:layout_marginTop="18dp"
+                    android:layout_toEndOf="@+id/user_icon"
+                    android:layout_toRightOf="@+id/user_icon"
+                    android:text="工程师小吴"
+                    android:textColor="#ffffff"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/tv_company"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignEnd="@+id/tv_user_name"
+                    android:layout_alignRight="@+id/tv_user_name"
+                    android:layout_below="@+id/tv_user_name"
+                    android:layout_marginEnd="11dp"
+                    android:layout_marginRight="11dp"
+                    android:layout_marginTop="12dp"
+                    android:text="公司：阿里众包" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/me_user_information"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_marginTop="25dp"
+                android:background="#e8f7ff"
+                android:layout_height="50dp">
+
+                <ImageView
+                    android:layout_marginLeft="50dp"
+                    android:src="@drawable/user_information_icon"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp" />
+
+                <TextView
+                    android:text="个人信息"
+                    android:layout_marginLeft="50dp"
+                    android:textColor="#13587f"
+                    android:textSize="20sp"
+                    android:gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+
+                <ImageView
+                    android:layout_marginLeft="120dp"
+                    android:src="@drawable/right"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="35dp"
+                    android:layout_height="25dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/me_history"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_marginTop="25dp"
+                android:background="#e8f7ff"
+                android:layout_height="50dp">
+
+                <ImageView
+                    android:layout_marginLeft="50dp"
+                    android:src="@drawable/me_history"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp" />
+
+                <TextView
+                    android:text="历史项目"
+                    android:layout_marginLeft="50dp"
+                    android:textColor="#13587f"
+                    android:textSize="20sp"
+                    android:gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+
+                <ImageView
+                    android:layout_marginLeft="120dp"
+                    android:src="@drawable/right"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="35dp"
+                    android:layout_height="25dp" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:background="#13587f"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+
+            <LinearLayout
+                android:id="@+id/me_record"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:background="#e8f7ff"
+                android:layout_height="50dp">
+
+                <ImageView
+                    android:layout_marginLeft="50dp"
+                    android:src="@drawable/me_record"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp" />
+
+                <TextView
+                    android:text="考勤记录"
+                    android:layout_marginLeft="50dp"
+                    android:textColor="#13587f"
+                    android:textSize="20sp"
+                    android:gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+
+                <ImageView
+                    android:layout_marginLeft="120dp"
+                    android:src="@drawable/right"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="35dp"
+                    android:layout_height="25dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/me_pwd"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_marginTop="25dp"
+                android:background="#efe0e0"
+                android:layout_height="50dp">
+
+                <ImageView
+                    android:layout_marginLeft="50dp"
+                    android:src="@drawable/me_pwd"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp" />
+
+                <TextView
+                    android:text="密码修改"
+                    android:layout_marginLeft="50dp"
+                    android:textColor="#7d0000"
+                    android:textSize="20sp"
+                    android:gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:background="#7d0000"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+
+            <LinearLayout
+                android:id="@+id/me_logout"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:background="#efe0e0"
+                android:layout_height="50dp">
+
+                <ImageView
+                    android:layout_marginLeft="50dp"
+                    android:src="@drawable/me_logout"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp" />
+
+                <TextView
+                    android:text="退出登录"
+                    android:layout_marginLeft="50dp"
+                    android:textColor="#7d0000"
+                    android:textSize="20sp"
+                    android:gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </com.example.ecode.UI.MyScrollView>
+
+</LinearLayout>
