@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import org.json.JSONException;
@@ -72,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
                         tempTextView.setText(map.get("temp").toString());
                         h_tempTextView.setText(map.get("l_temp").toString());
                         l_tempTextView.setText(map.get("h_temp").toString());
+
                     break;
             }
 
@@ -138,6 +140,12 @@ public class MainActivity extends AppCompatActivity {
             MainActivity.this.handler.sendMessage(msg2);
             MainActivity.this.handler.sendMessage(msg);
 
+            String weather = weahterTextView.getText().toString();
+            LinearLayout background = findViewById(R.id.background);
+            if(weather.indexOf("雨") != -1)
+                background.setBackground(getResources().getDrawable(R.mipmap.ic_launcher));
+            else if(weather.indexOf("风") != -1)
+                background.setBackground(getResources().getDrawable(R.drawable.ic_launcher_background));
         }
     }
 }
