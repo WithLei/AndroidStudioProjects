@@ -47,8 +47,13 @@ public class invertedActivity extends DemoBase implements SeekBar.OnSeekBarChang
         mSeekBarX = findViewById(R.id.seekBar1);
         mSeekBarY = findViewById(R.id.seekBar2);
 
-        mSeekBarX.setProgress(45);
-        mSeekBarY.setProgress(100);
+        //设置XY最大长度
+        mSeekBarX.setMax(50);
+        mSeekBarY.setMax(50);
+
+        //设置当前XY轴长度
+        mSeekBarX.setProgress(25);
+        mSeekBarY.setProgress(25);
 
         mSeekBarY.setOnSeekBarChangeListener(this);
         mSeekBarX.setOnSeekBarChangeListener(this);
@@ -91,7 +96,7 @@ public class invertedActivity extends DemoBase implements SeekBar.OnSeekBarChang
         rightAxis.setEnabled(false);
 
         // add data
-        setData(25, 50);
+        setData(10, 50);
 
         // // restrain the maximum scale-out factor
         // mChart.setScaleMinima(3f, 3f);
@@ -274,5 +279,11 @@ public class invertedActivity extends DemoBase implements SeekBar.OnSeekBarChang
 
         // set data
         mChart.setData(data);
+
+        //refresh view
+        tvX.setText("" + count);
+//        mSeekBarY.setProgress(count);
+        tvY.setText("" + (int)range);
+//        mSeekBarY.setProgress((int)range);
     }
 }

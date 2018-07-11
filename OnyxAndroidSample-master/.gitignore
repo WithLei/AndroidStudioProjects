@@ -1,0 +1,17 @@
+.idea/
+.vs/
+.gradle/
+.externalNativeBuild/
+ARM/
+gen/
+obj/
+out/
+build/
+armeabi-v7a/
+*.iml
+*.config
+*.creator*
+*.files
+*.includes
+*.hprof
+*.alloc

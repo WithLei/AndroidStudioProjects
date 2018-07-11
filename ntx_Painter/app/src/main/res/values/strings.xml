@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<resources>
+    <string name="title">SAVE FILE</string>
+    <string name="app_name">PainterNTX</string>
+    <string name="title_2">LOAD FILE</string>
+    <string name="chkbox_finger_touch">Finger touch</string>
+    <string name="msg_info">
+    --------------------------------- V4.3.0 ---------------------------------\n\n
+    This example is used to demonstrate E-ink refresh mode and digitizer \n\n
+    on the Netronix EPD devices.</string>
+    <string name="image_pick_title">Pick image</string>
+    <string name="image_pick_no_image">No image is found!</string>
+    <string name="toolbox_save_msg_success">Saving to %1$s is successful !</string>
+    <string name="toolbox_save_msg_fail">Saving to %1$s failed !</string>
+    <string name="wait">Please wait...</string>
+</resources>
