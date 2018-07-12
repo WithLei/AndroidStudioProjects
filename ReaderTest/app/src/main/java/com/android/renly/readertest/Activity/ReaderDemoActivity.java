@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -47,6 +48,7 @@ public class ReaderDemoActivity extends Activity {
         ComponentName componentName = new ComponentName("com.onyx.kreader","com.onyx.kreader.ui.ReaderTabHostActivity");
         intent.setComponent(componentName);
         intent.setData(Uri.fromFile(f));
+        Log.e("print",Uri.fromFile(f).toString());
         startActivity(intent);
     }
 }
