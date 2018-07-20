@@ -17,10 +17,10 @@
             android:layout_height="match_parent"
             android:layout_centerInParent="true" />
 
-        <include layout="@layout/title" />
+        <include layout="@layout/title_live" />
 
         <include
-            layout="@layout/titlebar"
+            layout="@layout/titlebar_live"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="12dp"
