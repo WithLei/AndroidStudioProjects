@@ -1,9 +1,16 @@
 package com.android.renly.LiveDemo.Activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.android.renly.LiveDemo.R;
 import com.android.renly.LiveDemo.Utils.NetUtils;
@@ -12,22 +19,56 @@ import com.tencent.rtmp.TXLivePushConfig;
 import com.tencent.rtmp.TXLivePusher;
 import com.tencent.rtmp.ui.TXCloudVideoView;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 
 public class PusherActivity extends Activity {
+    @BindView(R.id.video_view)
+    TXCloudVideoView videoView;
+    @BindView(R.id.back_tv)
+    TextView backTv;
+    @BindView(R.id.back_ll)
+    LinearLayout backLl;
+    @BindView(R.id.title_tv)
+    TextView titleTv;
+    @BindView(R.id.btnNew)
+    Button btnNew;
+    @BindView(R.id.btnScan)
+    Button btnScan;
+    @BindView(R.id.roomid)
+    EditText roomid;
+    @BindView(R.id.video_frame)
+    FrameLayout videoFrame;
+    @BindView(R.id.titlebar)
+    RelativeLayout titlebar;
     private TXLivePusher mLivePusher;
     private TXLivePushConfig mLivePushConfig;
+
+    private String roomName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_playroom);
+        ButterKnife.bind(this);
 
+        initView();
         testCode();
         initLivePusher();
         startPusher();
 //        startAudioPusher();
         setVideoQuality();
 
+    }
+
+    private void initView() {
+        backLl.setVisibility(View.VISIBLE);
+        titlebar.setVisibility(View.GONE);
+        Intent intent = getIntent();
+        roomName = intent.getStringExtra("RoomName");
+        titleTv.setText(roomName);
     }
 
     @Override
@@ -46,6 +87,7 @@ public class PusherActivity extends Activity {
     private static final int STANDARD = 1;
     private static final int HIGH = 2;
     private static final int SUPER = 3;
+
     private void setVideoQuality() {
         /**
          * setVideoQuality(quality, adjustBitrate, adjustResolution)
@@ -66,7 +108,7 @@ public class PusherActivity extends Activity {
          *      YES:动态分辨率（适合视频通话场景）
          *      NO:固定分辨率 √
          */
-        mLivePusher.setVideoQuality(HIGH,false,false);
+        mLivePusher.setVideoQuality(HIGH, false, false);
     }
 
     private void startAudioPusher() {
@@ -113,5 +155,18 @@ public class PusherActivity extends Activity {
          */
         String sdkver = TXLiveBase.getSDKVersionStr();
         Log.d("liteavsdk", "liteav sdk version is : " + sdkver);
+    }
+
+    @OnClick({R.id.back_ll, R.id.btnNew, R.id.btnScan})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.back_ll:
+                finish();
+                break;
+            case R.id.btnNew:
+                break;
+            case R.id.btnScan:
+                break;
+        }
     }
 }

@@ -11,6 +11,12 @@
         android:layout_height="match_parent"
         android:layout_marginTop="0dp">
 
+        <com.tencent.rtmp.ui.TXCloudVideoView
+            android:id="@+id/video_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true" />
+
         <include layout="@layout/title" />
 
         <include
@@ -20,12 +26,14 @@
             android:layout_marginLeft="12dp"
             android:layout_marginRight="12dp"
             android:layout_marginTop="45dp" />
+        <ImageView
+            android:id="@+id/loadingImageView"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:layout_gravity="center"
+            android:src="@drawable/loading_animation"
+            android:visibility="gone"/>
 
-        <com.tencent.rtmp.ui.TXCloudVideoView
-            android:id="@+id/video_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_centerInParent="true" />
 
     </FrameLayout>
 </LinearLayout>

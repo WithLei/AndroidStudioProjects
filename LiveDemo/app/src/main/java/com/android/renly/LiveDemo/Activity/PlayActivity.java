@@ -1,31 +1,120 @@
 package com.android.renly.LiveDemo.Activity;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.android.renly.LiveDemo.R;
 import com.android.renly.LiveDemo.Utils.NetUtils;
+import com.tencent.rtmp.ITXLivePlayListener;
 import com.tencent.rtmp.TXLiveBase;
 import com.tencent.rtmp.TXLiveConstants;
 import com.tencent.rtmp.TXLivePlayer;
 import com.tencent.rtmp.ui.TXCloudVideoView;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 
 public class PlayActivity extends Activity {
+    @BindView(R.id.video_view)
+    TXCloudVideoView videoView;
+    @BindView(R.id.back_tv)
+    TextView backTv;
+    @BindView(R.id.back_ll)
+    LinearLayout backLl;
+    @BindView(R.id.title_tv)
+    TextView titleTv;
+    @BindView(R.id.btnNew)
+    Button btnNew;
+    @BindView(R.id.btnScan)
+    Button btnScan;
+    @BindView(R.id.roomid)
+    EditText roomid;
+    @BindView(R.id.video_frame)
+    FrameLayout videoFrame;
+    @BindView(R.id.titlebar)
+    RelativeLayout titlebar;
+    @BindView(R.id.loadingImageView)
+    ImageView mLoadingView;
     private TXCloudVideoView mView;
     private TXLivePlayer mLivePlayer;
+
+
+    private String roomName;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_playroom);
+        ButterKnife.bind(this);
 
+        initView();
         testCode();
         createPlayer();
         startPlay();
         adjustView();
+    }
+
+    ITXLivePlayListener mListener = new ITXLivePlayListener() {
+        @Override
+        public void onPlayEvent(int event, Bundle bundle) {
+            Log.e("bundle", "bundle == " + bundle.toString() + "\n" + "event == " + event);
+            if (event == TXLiveConstants.PLAY_EVT_PLAY_BEGIN) {
+                stopLoadingAnimation();
+            } else if (event == TXLiveConstants.PLAY_ERR_NET_DISCONNECT || event == TXLiveConstants.PLAY_EVT_PLAY_END) {
+                stopPlay();
+            } else if (event == TXLiveConstants.PLAY_EVT_PLAY_LOADING){
+                startLoadingAnimation();
+            } else if (event == TXLiveConstants.PLAY_EVT_RCV_FIRST_I_FRAME) {
+                stopLoadingAnimation();
+            }
+        }
+
+        @Override
+        public void onNetStatus(Bundle bundle) {
+        }
+    };
+
+    private void startLoadingAnimation() {
+        if (mLoadingView != null) {
+            mLoadingView.setVisibility(View.VISIBLE);
+            ((AnimationDrawable) mLoadingView.getDrawable()).start();
+        }
+    }
+
+    private void stopLoadingAnimation() {
+        if (mLoadingView != null) {
+            mLoadingView.setVisibility(View.GONE);
+            ((AnimationDrawable) mLoadingView.getDrawable()).stop();
+        }
+    }
+
+    private void stopPlay(){
+        if (mLivePlayer != null) {
+            mLivePlayer.stopRecord();
+            mLivePlayer.setPlayListener(null);
+            mLivePlayer.stopPlay(true);
+        }
+    }
+
+    private void initView() {
+        backLl.setVisibility(View.VISIBLE);
+        Intent intent = getIntent();
+        roomName = intent.getStringExtra("RoomName");
+        titleTv.setText(roomName);
     }
 
     @Override
@@ -75,9 +164,9 @@ public class PlayActivity extends Activity {
          */
 
         // 设置填充模式
-        mLivePlayer.setRenderMode(TXLiveConstants.RENDER_MODE_ADJUST_RESOLUTION);
+        mLivePlayer.setRenderMode(TXLiveConstants.RENDER_MODE_FULL_FILL_SCREEN);
         // 设置画面渲染方向
-        mLivePlayer.setRenderRotation(TXLiveConstants.RENDER_ROTATION_LANDSCAPE);
+        mLivePlayer.setRenderRotation(TXLiveConstants.RENDER_ROTATION_PORTRAIT);
     }
 
     private void startPlay() {
@@ -109,6 +198,7 @@ public class PlayActivity extends Activity {
 
         //关键 player 对象与界面 view
         mLivePlayer.setPlayerView(mView);
+        mLivePlayer.setPlayListener(mListener);
     }
 
     private void testCode() {
@@ -117,5 +207,18 @@ public class PlayActivity extends Activity {
          */
         String sdkver = TXLiveBase.getSDKVersionStr();
         Log.d("liteavsdk", "liteav sdk version is : " + sdkver);
+    }
+
+    @OnClick({R.id.back_ll, R.id.btnNew, R.id.btnScan})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.back_ll:
+                finish();
+                break;
+            case R.id.btnNew:
+                break;
+            case R.id.btnScan:
+                break;
+        }
     }
 }
