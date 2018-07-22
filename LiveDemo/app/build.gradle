@@ -2,12 +2,12 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.jakewharton.butterknife'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion("25.0.2")
+    compileSdkVersion 27
+    buildToolsVersion("27")
     defaultConfig {
         applicationId "com.android.renly.LiveDemo"
-        minSdkVersion 15
-        targetSdkVersion 23
+        minSdkVersion 19
+        targetSdkVersion 27
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -28,7 +28,7 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     // 导入腾讯云直播SDK aar
     compile(name: 'LiteAVSDK_Professional_4.9.4663', ext: 'aar')
-    compile 'com.android.support:appcompat-v7:25.+'
+    compile 'com.android.support:appcompat-v7:27.+'
     compile 'com.android.support.constraint:constraint-layout:1.1.2'
     compile 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
