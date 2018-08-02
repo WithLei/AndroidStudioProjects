@@ -11,6 +11,8 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
+
 
         ndk {
             abiFilters "armeabi", "armeabi-v7a", "x86"
@@ -28,10 +30,10 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     // 导入腾讯云直播SDK aar
     compile(name: 'LiteAVSDK_Professional_4.9.4663', ext: 'aar')
-    compile 'com.android.support:appcompat-v7:27.+'
+    implementation 'com.android.support:appcompat-v7:27.1.1'
     compile 'com.android.support.constraint:constraint-layout:1.1.2'
-    compile 'com.jakewharton:butterknife:8.8.1'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    implementation 'com.jakewharton:butterknife:8.4.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
     testCompile 'junit:junit:4.12'
     androidTestCompile 'com.android.support.test:runner:1.0.2'
 }
