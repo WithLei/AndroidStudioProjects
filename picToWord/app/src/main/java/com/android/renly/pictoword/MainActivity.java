@@ -1,22 +1,29 @@
 package com.android.renly.pictoword;
-import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.StrictMode;
 import android.provider.MediaStore;
-import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+
+import cz.msebera.android.httpclient.Header;
 
 public class MainActivity extends Activity {
     private static final int NONE = 0;
@@ -43,23 +50,6 @@ public class MainActivity extends Activity {
         StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
         StrictMode.setVmPolicy(builder.build());
         builder.detectFileUriExposure();
-
-        // Storage Permissions
-        final int REQUEST_EXTERNAL_STORAGE = 1;
-        String[] PERMISSIONS_STORAGE = {
-                Manifest.permission.READ_EXTERNAL_STORAGE,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE
-        };
-        // Check if we have write permission
-        int permission = ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
-        if (permission != PackageManager.PERMISSION_GRANTED) {
-            // We don't have permission so prompt the user
-            ActivityCompat.requestPermissions(
-                    MainActivity.this,
-                    PERMISSIONS_STORAGE,
-                    REQUEST_EXTERNAL_STORAGE
-            );
-        }
     }
 
     private final View.OnClickListener onClickListener = new View.OnClickListener() {
@@ -85,14 +75,11 @@ public class MainActivity extends Activity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        Log.e("print","onActivityResult");
         if (resultCode == NONE){
-            Log.e("print","resultCode == NONE");
             return;
         }
         // 拍照
         if (requestCode == PHOTO_GRAPH) {
-            Log.e("print","resultCode == PHOTO_GRAPH");
             // 设置文件保存路径
             String filePath = Environment.getExternalStorageDirectory() + change_path;
             File localFile = new File(filePath);
@@ -104,28 +91,83 @@ public class MainActivity extends Activity {
             startPhotoZoom(Uri.fromFile(picture));
         }
         if (data == null){
-            Log.e("print","data == null");
             return;
         }
         // 读取相册缩放图片
         if (requestCode == PHOTO_ZOOM) {
-            Log.e("print","requestCode == PHOTO_ZOOM");
             startPhotoZoom(data.getData());
         }
         // 处理结果
         if (requestCode == PHOTO_RESOULT) {
-            Log.e("print","requestCode == PHOTO_RESOULT");
             Bundle extras = data.getExtras();
             if (extras != null) {
-                Log.e("print","extras != null");
                 Bitmap photo = extras.getParcelable("data");
                 ByteArrayOutputStream stream = new ByteArrayOutputStream();
                 photo.compress(Bitmap.CompressFormat.JPEG, 75, stream);// (0-100)压缩文件
+                bytes = stream.toByteArray();
                 //此处可以把Bitmap保存到sd卡中
                 imageView.setImageBitmap(photo); //把图片显示在ImageView控件上
+                picToWord();
             }
         }
         super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    String sign;
+    byte[] bytes;
+    private void picToWord() {
+        AsyncHttpClient client = new AsyncHttpClient();
+        setHeader(client);
+        RequestParams params = new RequestParams();
+        setParams(params);
+        client.post(this, Secret.url, params, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                String response = new String(responseBody);
+                JSONObject object = JSON.parseObject(response);
+                int code = object.getInteger("code");
+                String msg = object.getString("message");
+                JSONArray items = object.getJSONArray("data.items");
+                String content = "";
+                for(int i = 0;i < items.size(); i++){
+                    JSONObject obj = items.getJSONObject(i);
+                    content += obj.getString("itemstring");
+                }
+                Log.e("print","code:" + code + " msg:" + msg + " content:" + content);
+                Toast.makeText(MainActivity.this, "code:" + code + " msg:" + msg + " content:" + content, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                Toast.makeText(MainActivity.this, "网络开小差惹", Toast.LENGTH_SHORT).show();
+                Log.e("print","网络开小差" + responseBody.toString() + " " + error.getMessage());
+            }
+        });
+    }
+
+    public void setHeader(AsyncHttpClient client) {
+        // 腾讯云文字识别服务器域名
+        client.addHeader("Host","recognition.image.myqcloud.com");
+
+        // 根据不同接口选择：
+        // 1. 使用 application/json 格式，参数为 url 或 base64，其值为图片链接或图片base64编码；
+        // 2. 使用 multipart/form-data 格式，参数为 image，其值为图片的二进制内容。
+//        client.addHeader("content-type","multipart/form-data");
+        client.addHeader("Content-Type","application/json");
+
+        // 多次有效签名，用于鉴权
+        try {
+            sign = Sign.appSign(Secret.appid,Secret.secretid,Secret.secretkey,"",Secret.addtime);
+            client.addHeader("Authorization",sign);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void setParams(RequestParams params) {
+        params.put("appid",Secret.appid);
+//        params.put("image",bytes);
+        params.put("url","http://test-1254540501.cosgz.myqcloud.com/%E6%89%8B%E5%86%99%E4%BD%93.jpg");
     }
 
     /**
@@ -151,6 +193,6 @@ public class MainActivity extends Activity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Log.e("print","bye");
     }
+
 }
