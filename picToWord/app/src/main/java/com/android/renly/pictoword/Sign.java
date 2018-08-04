@@ -32,7 +32,7 @@ public class Sign {
                                  long expired) throws Exception {
         long now = System.currentTimeMillis() / 1000;
         int rdm = Math.abs(new Random().nextInt());
-        String plainText = String.format("a=%d&b=%s&k=%s&t=%d&e=%d&r=%d", appId, bucketName,
+        String plainText = String.format("a=%d&b=%s&k=%s&t=%d&e=%d&r=%d&f=img", appId, bucketName,
                 secretId, now, now + expired, rdm);
         byte[] hmacDigest = HmacSha1(plainText, secretKey);
         byte[] signContent = new byte[hmacDigest.length + plainText.getBytes().length];

@@ -5,6 +5,6 @@ public class Secret {
     public static final long appid = 1253210953;
     public static final String secretid = "AKIDMchbJqqQRL4czEzH6jBRVSEzc3c6hcaR";
     public static final String secretkey = "pTwEKJ9oX8dyBD4nNq7D7qiiYGoBPRI8";
-    public static final long addtime = 86400;
+    public static final long addtime = 8640;
     //一天
 }

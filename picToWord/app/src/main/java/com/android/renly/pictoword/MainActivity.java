@@ -115,11 +115,15 @@ public class MainActivity extends Activity {
 
     String sign;
     byte[] bytes;
+    AsyncHttpClient client;
+    RequestParams params;
     private void picToWord() {
-        AsyncHttpClient client = new AsyncHttpClient();
-        setHeader(client);
-        RequestParams params = new RequestParams();
-        setParams(params);
+        client = new AsyncHttpClient();
+        setHeader();
+        params = new RequestParams();
+        setParams();
+        client.setTimeout(30000);
+        Log.e("print",params.toString());
         client.post(this, Secret.url, params, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
@@ -140,12 +144,14 @@ public class MainActivity extends Activity {
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
                 Toast.makeText(MainActivity.this, "网络开小差惹", Toast.LENGTH_SHORT).show();
-                Log.e("print","网络开小差" + responseBody.toString() + " " + error.getMessage());
+//                Log.e("print","网络开小差a" + responseBody.toString());
+                Log.e("print","网络开小差b" + statusCode);
+                Log.e("print","网络开小差c" + error.toString());
             }
         });
     }
 
-    public void setHeader(AsyncHttpClient client) {
+    public void setHeader() {
         // 腾讯云文字识别服务器域名
         client.addHeader("Host","recognition.image.myqcloud.com");
 
@@ -159,15 +165,18 @@ public class MainActivity extends Activity {
         try {
             sign = Sign.appSign(Secret.appid,Secret.secretid,Secret.secretkey,"",Secret.addtime);
             client.addHeader("Authorization",sign);
+            Log.e("print","sign == " + sign);
         } catch (Exception e) {
             e.printStackTrace();
         }
+        client.addHeader("Content-Length","350");
     }
 
-    public void setParams(RequestParams params) {
+    public void setParams() {
         params.put("appid",Secret.appid);
 //        params.put("image",bytes);
         params.put("url","http://test-1254540501.cosgz.myqcloud.com/%E6%89%8B%E5%86%99%E4%BD%93.jpg");
+        params.put("bucket","test");
     }
 
     /**
