@@ -20,10 +20,18 @@ import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
+import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.ProtocolException;
+import java.net.URL;
 
 import cz.msebera.android.httpclient.Header;
+import cz.msebera.android.httpclient.HeaderElement;
+import cz.msebera.android.httpclient.ParseException;
 
 public class MainActivity extends Activity {
     private static final int NONE = 0;
@@ -50,6 +58,12 @@ public class MainActivity extends Activity {
         StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
         StrictMode.setVmPolicy(builder.build());
         builder.detectFileUriExposure();
+        try {
+            sign = Sign.appSign(Secret.appid,Secret.secretid,Secret.secretkey,"",Secret.addtime);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        IsInternet.checkNetwork(this);
     }
 
     private final View.OnClickListener onClickListener = new View.OnClickListener() {
@@ -124,7 +138,7 @@ public class MainActivity extends Activity {
         setParams();
         client.setTimeout(30000);
         Log.e("print",params.toString());
-        client.post(this, Secret.url, params, new AsyncHttpResponseHandler() {
+        client.post(Secret.url, params, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 String response = new String(responseBody);
@@ -152,9 +166,9 @@ public class MainActivity extends Activity {
     }
 
     public void setHeader() {
+        client.removeAllHeaders();
         // 腾讯云文字识别服务器域名
         client.addHeader("Host","recognition.image.myqcloud.com");
-
         // 根据不同接口选择：
         // 1. 使用 application/json 格式，参数为 url 或 base64，其值为图片链接或图片base64编码；
         // 2. 使用 multipart/form-data 格式，参数为 image，其值为图片的二进制内容。
@@ -162,21 +176,16 @@ public class MainActivity extends Activity {
         client.addHeader("Content-Type","application/json");
 
         // 多次有效签名，用于鉴权
-        try {
-            sign = Sign.appSign(Secret.appid,Secret.secretid,Secret.secretkey,"",Secret.addtime);
-            client.addHeader("Authorization",sign);
-            Log.e("print","sign == " + sign);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        client.addHeader("Authorization",sign);
+        Log.e("print","sign == " + sign);
         client.addHeader("Content-Length","350");
     }
 
     public void setParams() {
         params.put("appid",Secret.appid);
 //        params.put("image",bytes);
-        params.put("url","http://test-1254540501.cosgz.myqcloud.com/%E6%89%8B%E5%86%99%E4%BD%93.jpg");
-        params.put("bucket","test");
+        params.put("url","http://songsong-1253604429.picsh.myqcloud.com/1528685503(1).png");
+        params.put("bucket","");
     }
 
     /**
