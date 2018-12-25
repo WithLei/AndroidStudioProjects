@@ -5,14 +5,27 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.renly.toilet.Utils.TimeUtils;
+import com.android.renly.toilet.api.RetrofitService;
+import com.android.renly.toilet.api.bean.Position;
+import com.android.renly.toilet.api.bean.Toilet;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 import devlight.io.library.ntb.NavigationTabBar;
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
 
 
 public class MainActivity extends Activity {
@@ -47,6 +60,8 @@ public class MainActivity extends Activity {
             public Object instantiateItem(final ViewGroup container, final int position) {
                 final View view = LayoutInflater.from(
                         getBaseContext()).inflate(R.layout.item_vp, null, false);
+
+                prepareView(view,position);
 
                 final TextView txtPage = view.findViewById(R.id.floor);
                 txtPage.setText(String.format("#%d层", position+1));
@@ -126,9 +141,129 @@ public class MainActivity extends Activity {
         );
 
         navigationTabBar.setModels(models);
-        navigationTabBar.setViewPager(viewPager, 4);
+        navigationTabBar.setViewPager(viewPager, 0);
+    }
+
+    private void prepareView(final View view, final int position) {
+        Log.e("print", "lalalallala");
+        // 获取该楼层所有的厕所
+        RetrofitService.getToiletByFloor(position+1)
+                .subscribe(new Observer<List<Toilet>>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {}
+
+                    @Override
+                    public void onNext(List<Toilet> toilets) {
+                        Log.e("print", toilets.size() + toilets.toString());
+                        ((TextView)view.findViewById(R.id.toilet_01)).setText(toilets.get(0).getName());
+                        ((TextView)view.findViewById(R.id.toilet_02)).setText(toilets.get(1).getName());
+                        ((TextView)view.findViewById(R.id.toilet_03)).setText(toilets.get(2).getName());
+                        ((TextView)view.findViewById(R.id.toilet_04)).setText(toilets.get(3).getName());
+
+                        final LinearLayout ll01 = view.findViewById(R.id.ll_01);
+                        final LinearLayout ll02 = view.findViewById(R.id.ll_01);
+                        final LinearLayout ll03 = view.findViewById(R.id.ll_01);
+                        final LinearLayout ll04 = view.findViewById(R.id.ll_01);
+
+                        // 由于前端的问题这里最多只插入四个，否则会出BUG
+                        RetrofitService.getPositionByToilet(toilets.get(0).getId())
+                                .subscribe(new Consumer<List<Position>>() {
+                                    @Override
+                                    public void accept(List<Position> positions) throws Exception {
+                                        addPosition(positions,ll01);
+                                    }
+                                });
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.e("print","onError " + e.getMessage());
+                    }
+
+                    @Override
+                    public void onComplete() {}
+                });
+
+
+    }
+
+    private void addPosition(List<Position> positions, LinearLayout ll) {
+        for (Position position : positions) {
+            Log.e("print",positions.size() + " " + position.toString());
+            if (!position.getIsServing()) {
+                addImcontactPosition(position, ll);
+                continue;
+            }
+            if (position.getIsUsing()) {
+                addEmptyPosition(position, ll);
+            }else {
+                long usingTime = TimeUtils.stringToMiles(position.getStart_time()) - new Date().getTime();
+                if (usingTime < 1800) {
+                    addBusyPosition(position, ll, usingTime);
+                } else {
+                    addVeryBusyPosition(position, ll, usingTime);
+                }
+            }
+        }
     }
 
     private void initData() {
+    }
+
+    private void addEmptyPosition(final Position position, LinearLayout ll) {
+        final View emptyView = LayoutInflater.from(
+                getBaseContext()).inflate(R.layout.item_position, null, false);
+        LinearLayout empty = emptyView.findViewById(R.id.emptyView);
+        empty.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onToiletClick(position);
+            }
+        });
+        ll.addView(empty);
+    }
+
+    private void addBusyPosition(final Position position, LinearLayout ll, long usingTime) {
+        final View busyView = LayoutInflater.from(
+                getBaseContext()).inflate(R.layout.item_position2, null, false);
+        LinearLayout busy = busyView.findViewById(R.id.busyView);
+        busy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onToiletClick(position);
+            }
+        });
+        ll.addView(busy);
+    }
+
+    private void addVeryBusyPosition(final Position position, LinearLayout ll, long usingTime) {
+       final View verybusyView = LayoutInflater.from(
+                getBaseContext()).inflate(R.layout.item_position3, null, false);
+        LinearLayout verybusy = verybusyView.findViewById(R.id.vertBusyView);
+        verybusy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onToiletClick(position);
+            }
+        });
+        ll.addView(verybusy);
+    }
+
+    private void addImcontactPosition(final Position position, LinearLayout ll) {
+        final View imcontactView = LayoutInflater.from(
+                getBaseContext()).inflate(R.layout.item_position4, null, false);
+        LinearLayout view = imcontactView.findViewById(R.id.imcomtactView);
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onToiletClick(position);
+            }
+        });
+        ll.addView(view);
+    }
+
+
+    private void onToiletClick(Position position) {
+        Toast.makeText(MainActivity.this, position.toString(), Toast.LENGTH_SHORT).show();
     }
 }
