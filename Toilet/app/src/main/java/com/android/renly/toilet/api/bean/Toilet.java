@@ -4,29 +4,29 @@ public class Toilet {
     private int id;
     private String name;
     private String type;
-    private Cleaner cleanid;
+    private Cleaner cleaner;
     private String last_cleaned_time;
     private String next_clean_time;
     private boolean isService;
     private Floor floor;
 
-    public Toilet(String name, String type, Cleaner cleanid,
+    public Toilet(String name, String type, Cleaner cleaner,
                   String last_cleaned_time, String next_clean_time, boolean isService, Floor floor) {
         this.name = name;
         this.type = type;
-        this.cleanid = cleanid;
+        this.cleaner = cleaner;
         this.last_cleaned_time = last_cleaned_time;
         this.next_clean_time = next_clean_time;
         this.isService = isService;
         this.floor = floor;
     }
 
-    public Toilet(int id, String name, String type, Cleaner cleanid,
+    public Toilet(int id, String name, String type, Cleaner cleaner,
                   String last_cleaned_time, String next_clean_time, boolean isService, Floor floor) {
         this.id = id;
         this.name = name;
         this.type = type;
-        this.cleanid = cleanid;
+        this.cleaner = cleaner;
         this.last_cleaned_time = last_cleaned_time;
         this.next_clean_time = next_clean_time;
         this.isService = isService;
@@ -57,12 +57,12 @@ public class Toilet {
         this.type = type;
     }
 
-    public Cleaner getCleanid() {
-        return cleanid;
+    public Cleaner getCleaner() {
+        return cleaner;
     }
 
-    public void setCleanid(Cleaner cleanid) {
-        this.cleanid = cleanid;
+    public void setCleaner(Cleaner cleaner) {
+        this.cleaner = cleaner;
     }
 
     public String getLast_cleaned_time() {

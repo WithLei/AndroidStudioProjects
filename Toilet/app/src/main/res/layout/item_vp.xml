@@ -76,7 +76,8 @@
             <LinearLayout
                 android:id="@+id/ll_01"
                 android:layout_width="wrap_content"
-                android:layout_height="80dp">
+                android:layout_height="80dp"
+                android:orientation="horizontal">
 
             </LinearLayout>
         </HorizontalScrollView>
@@ -114,20 +115,8 @@
             <LinearLayout
                 android:id="@+id/ll_02"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="80dp"
                 android:orientation="horizontal">
-
-                <include layout="@layout/item_position2" />
-
-                <include layout="@layout/item_position" />
-
-                <include layout="@layout/item_position2" />
-
-                <include layout="@layout/item_position" />
-
-                <include layout="@layout/item_position" />
-
-                <include layout="@layout/item_position" />
 
             </LinearLayout>
         </HorizontalScrollView>
@@ -165,19 +154,8 @@
             <LinearLayout
                 android:id="@+id/ll_03"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <include layout="@layout/item_position3" />
-
-                <include layout="@layout/item_position3" />
-
-                <include layout="@layout/item_position3" />
-
-                <include layout="@layout/item_position2" />
-
-                <include layout="@layout/item_position2" />
-
-                <include layout="@layout/item_position2" />
+                android:layout_height="80dp"
+                android:orientation="horizontal">
 
             </LinearLayout>
         </HorizontalScrollView>
@@ -215,13 +193,8 @@
             <LinearLayout
                 android:id="@+id/ll_04"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <include layout="@layout/item_position2" />
-
-                <include layout="@layout/item_position4" />
-
-                <include layout="@layout/item_position4" />
+                android:layout_height="80dp"
+                android:orientation="horizontal">
 
             </LinearLayout>
         </HorizontalScrollView>

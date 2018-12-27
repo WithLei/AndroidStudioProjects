@@ -21,9 +21,10 @@ public class TimeUtils {
         }
 
         // 一分钟内
-        if (x/60000 < 1)
-            return x%60000 + "秒前";
-        x /= 60000;
+        x/=1000;
+        if (x/60 < 1)
+            return x%60 + "秒前";
+        x /= 60;
         
         // 一小时内
         if (x/60 < 1)
